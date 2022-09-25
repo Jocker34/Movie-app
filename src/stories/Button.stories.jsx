@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from './Button';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
 	title: 'Example/Button',
 	component: Button,
