@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+[![Actions Status](https://github.com/Jocker34/Movie-app/workflows/CI/badge.svg)](https://github.com/Jocker34/Movie-app/actions)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
