@@ -23,10 +23,14 @@ export const MoviePage = ({ language }) => {
 					<Description>
 						<TextCointainer>
 							<span>{translate(language).MOVIE_PAGE.TITLE}</span>
-							<span>{translate(language).MOVIE_PAGE.MOVIE_TITLE}</span>
+							<span>
+								{translate(language).MOVIE_PAGE.MOVIE_TITLE}
+							</span>
 						</TextCointainer>
 						<TextCointainer>
-							<span>{translate(language).MOVIE_PAGE.OVERVIEW}</span>
+							<span>
+								{translate(language).MOVIE_PAGE.OVERVIEW}
+							</span>
 							<span>{LOREM}</span>
 						</TextCointainer>
 						<TextCointainer>
@@ -34,16 +38,22 @@ export const MoviePage = ({ language }) => {
 							<span>2021-05-26</span>
 						</TextCointainer>
 						<TextCointainer>
-							<span>{translate(language).MOVIE_PAGE.REVENUE}</span>
+							<span>
+								{translate(language).MOVIE_PAGE.REVENUE}
+							</span>
 							<span>$ 42 600 000</span>
 						</TextCointainer>
 						<TextCointainer>
-							<span>{translate(language).MOVIE_PAGE.DURATION}</span>
+							<span>
+								{translate(language).MOVIE_PAGE.DURATION}
+							</span>
 							<span>2:14</span>
 						</TextCointainer>
 					</Description>
 					<Actors>
-						<h1>{translate(language).MOVIE_PAGE.TOP_BILLED_CAST}</h1>
+						<h1>
+							{translate(language).MOVIE_PAGE.TOP_BILLED_CAST}
+						</h1>
 						<ActorCardContainer>
 							{ACTORS.map((actors) => (
 								<ActorCard id={actors.id} />

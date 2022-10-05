@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import Pagination from '@mui/material/Pagination';
 
@@ -23,35 +23,50 @@ export const MainPage = ({ search }) => {
 		setCurrentPage(page);
 	};
 
-	return (
-		<Container>
-			<CategoriesTabs
-				active={active}
-				setActive={setActive}
-				posts={posts}
-				setPosts={setPosts}
-			/>
+	const movies = useMemo(() => {
+		if (
+			searchMovie(posts, search, indexOfFirstPost, indexOfLastPost)
+				.length !== 0
+		) {
+			return (
+				<>
+					<CategoriesTabs
+						active={active}
+						setActive={setActive}
+						posts={posts}
+						setPosts={setPosts}
+					/>
+					<Movies>
+						{searchMovie(
+							posts,
+							search,
+							indexOfFirstPost,
+							indexOfLastPost
+						).map((post) => (
+							<MovieCard
+								key={post.id}
+								title={post.original_title}
+							/>
+						))}
+					</Movies>
+					<StyledPagination
+						count={count}
+						onChange={(e) => handleOnChange(e.target.textContent)}
+						page={postsPerPage}
+						size='large'
+					/>
+				</>
+			);
+		} else {
+			return (
+				<NoResult>
+					<h1>NO RESULTS FOUND</h1>
+				</NoResult>
+			);
+		}
+	}, [active, count, indexOfFirstPost, indexOfLastPost, posts, search]);
 
-			<>
-				<Movies>
-					{searchMovie(
-						posts,
-						search,
-						indexOfFirstPost,
-						indexOfLastPost
-					).map((post) => (
-						<MovieCard key={post.id} title={post.original_title} />
-					))}
-				</Movies>
-				<StyledPagination
-					count={count}
-					onChange={(e) => handleOnChange(e.target.textContent)}
-					page={postsPerPage}
-					size='large'
-				/>
-			</>
-		</Container>
-	);
+	return <Container>{movies}</Container>;
 };
 
 const Container = styled.div`
@@ -73,4 +88,10 @@ const StyledPagination = styled(Pagination)`
 	button {
 		color: white;
 	}
+`;
+
+const NoResult = styled.div`
+	display: flex;
+	color: white;
+	justify-content: center;
 `;

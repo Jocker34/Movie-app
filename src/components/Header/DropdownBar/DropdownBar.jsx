@@ -50,7 +50,10 @@ export const DropdownBar = ({ language, setLanguage }) => {
 				}}
 			>
 				{items.map((item) => (
-					<MenuItem key={item.id} onClick={() => changeLanguage(item)}>
+					<MenuItem
+						key={item.id}
+						onClick={() => changeLanguage(item)}
+					>
 						{item.value}
 					</MenuItem>
 				))}

@@ -6,7 +6,9 @@ import { CATEGORIES } from 'constants';
 export const CategoriesTabs = ({ active, setActive, posts, setPosts }) => {
 	const sortMoviesBy = (index) => {
 		if (index === 0) {
-			posts.sort((a, b) => a.original_title.localeCompare(b.original_title));
+			posts.sort((a, b) =>
+				a.original_title.localeCompare(b.original_title)
+			);
 			setPosts(posts);
 		} else if (index === 1) {
 			posts.sort((a, b) => a.popularity - b.popularity);

@@ -121,7 +121,8 @@ export const mockedMovies = [
 	{
 		adult: false,
 		id: 22,
-		original_title: 'Pirates of the Caribbean: The Curse of the Black Pearl',
+		original_title:
+			'Pirates of the Caribbean: The Curse of the Black Pearl',
 		popularity: 129.058,
 		video: false,
 	},

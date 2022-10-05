@@ -11,14 +11,22 @@ export const ActorPage = ({ language }) => {
 	return (
 		<Container>
 			<Details>
-				<Image src={PersonJPG} alt={ALT.PERSON} width={RESOLUTION.BIG} />
+				<Image
+					src={PersonJPG}
+					alt={ALT.PERSON}
+					width={RESOLUTION.BIG}
+				/>
 				<Information>
 					<Description>
 						<TextCointainer>
-							<StyledH1>{translate(language).ACTOR_PAGE.NAME}</StyledH1>
+							<StyledH1>
+								{translate(language).ACTOR_PAGE.NAME}
+							</StyledH1>
 						</TextCointainer>
 						<TextCointainer>
-							<span>{translate(language).ACTOR_PAGE.BIRTHDAY}</span>
+							<span>
+								{translate(language).ACTOR_PAGE.BIRTHDAY}
+							</span>
 							<span>2021-05-26</span>
 						</TextCointainer>
 						<TextCointainer>
@@ -26,7 +34,9 @@ export const ActorPage = ({ language }) => {
 							<span>2021-05-26</span>
 						</TextCointainer>
 						<TextCointainer>
-							<span>{translate(language).ACTOR_PAGE.BIOGRAPHY}</span>
+							<span>
+								{translate(language).ACTOR_PAGE.BIOGRAPHY}
+							</span>
 							<span>{LOREM}</span>
 						</TextCointainer>
 					</Description>
