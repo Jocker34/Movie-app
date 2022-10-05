@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const CategoriesTabs = ({ active, setActive, posts, setPosts }) => {
-	const categories = ['Popular', 'Top rated', 'Upcoming'];
+import { CATEGORIES } from 'constants';
 
+export const CategoriesTabs = ({ active, setActive, posts, setPosts }) => {
 	const sortMoviesBy = (index) => {
 		if (index === 0) {
 			posts.sort((a, b) => a.original_title.localeCompare(b.original_title));
@@ -20,8 +20,12 @@ export const CategoriesTabs = ({ active, setActive, posts, setPosts }) => {
 
 	return (
 		<Container>
-			{categories.map((element, index) => (
-				<Tabs active={active === index} onClick={() => sortMoviesBy(index)}>
+			{CATEGORIES.map((element, index) => (
+				<Tabs
+					key={index}
+					active={active === index}
+					onClick={() => sortMoviesBy(index)}
+				>
 					{element}
 				</Tabs>
 			))}

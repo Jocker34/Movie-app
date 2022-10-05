@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export const Input = ({
@@ -11,7 +10,6 @@ export const Input = ({
 	className,
 	name,
 }) => {
-	console.log(placeholder);
 	return (
 		<Container>
 			<label htmlFor='input'>{labelText}</label>
@@ -26,16 +24,6 @@ export const Input = ({
 			/>
 		</Container>
 	);
-};
-
-Input.propTypes = {
-	className: PropTypes.string,
-	onChange: PropTypes.func,
-	labelText: PropTypes.string,
-	name: PropTypes.string,
-	placeholder: PropTypes.string,
-	type: PropTypes.string,
-	value: PropTypes.any,
 };
 
 const StyledInput = styled.input`

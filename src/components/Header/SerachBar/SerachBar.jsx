@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
 import { Input } from 'common/Input/Input';
-import { INPUT } from 'constants.js';
+import { translate } from 'helpers/translate';
 
-export const SearchBar = () => {
+export const SearchBar = ({ setSearch, language }) => {
+	const handleOnChange = (e) => {
+		e.target.value ? setSearch(e.target.value) : setSearch('');
+	};
 	return (
 		<>
-			<StyledInput placeholder={INPUT.SEARCH} />
+			<StyledInput
+				placeholder={translate(language).INPUT.SERACH}
+				onChange={handleOnChange}
+			/>
 		</>
 	);
 };

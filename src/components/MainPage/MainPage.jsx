@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Pagination from '@mui/material/Pagination';
 
 import { mockedMovies } from 'movies';
 import { MovieCard } from 'components/MovieCard/MovieCard';
-import { Pagination } from './components/Pagination/Pagination';
 import { CategoriesTabs } from './components/CategoriesTabs/CategoriesTabs';
 
-export const MainPage = () => {
+import { searchMovie } from 'helpers/serarchMovie';
+
+export const MainPage = ({ search }) => {
 	const [posts, setPosts] = useState(mockedMovies);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [postsPerPage, setPostPerPage] = useState(30);
 	const [active, setActive] = useState();
 
+	const postsPerPage = 30;
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
-	const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
+	const count = Math.ceil(posts.length / postsPerPage);
+
+	const handleOnChange = (page) => {
+		setCurrentPage(page);
+	};
 
 	return (
 		<Container>
@@ -26,16 +31,25 @@ export const MainPage = () => {
 				posts={posts}
 				setPosts={setPosts}
 			/>
-			<Movies>
-				{currentPosts.map((post) => (
-					<MovieCard title={post.original_title} />
-				))}
-			</Movies>
-			<Pagination
-				postsPerPage={postsPerPage}
-				totalPosts={posts.length}
-				paginate={paginate}
-			/>
+
+			<>
+				<Movies>
+					{searchMovie(
+						posts,
+						search,
+						indexOfFirstPost,
+						indexOfLastPost
+					).map((post) => (
+						<MovieCard key={post.id} title={post.original_title} />
+					))}
+				</Movies>
+				<StyledPagination
+					count={count}
+					onChange={(e) => handleOnChange(e.target.textContent)}
+					page={postsPerPage}
+					size='large'
+				/>
+			</>
 		</Container>
 	);
 };
@@ -50,4 +64,13 @@ const Container = styled.div`
 const Movies = styled.div`
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-between;
+`;
+
+const StyledPagination = styled(Pagination)`
+	display: flex;
+	justify-content: center;
+	button {
+		color: white;
+	}
 `;

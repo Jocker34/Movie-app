@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MoviePlaceholderIMG from 'images/MoviePlaceholder.jpg';
+import { RESOLUTION, ALT } from 'constants';
+
 export const MoviePlaceholder = () => {
 	return (
 		<StyledImage
 			src={MoviePlaceholderIMG}
-			alt='movie-placeholder'
-			width='150px'
+			alt={ALT.MOVIE}
+			width={RESOLUTION.MEDIUM}
 		/>
 	);
 };

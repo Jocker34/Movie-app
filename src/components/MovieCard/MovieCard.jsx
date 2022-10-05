@@ -5,14 +5,14 @@ import { MoviePlaceholder } from './Placeholder/Placeholder';
 export const MovieCard = ({ title }) => {
 	return (
 		<MovieCardContainer>
-			<Image>
-				<Test>9.9</Test>
+			<div>
+				<Raiting>9.9</Raiting>
 				<MoviePlaceholder />
-			</Image>
-			<Description>
+			</div>
+			<div>
 				<h5>{title}</h5>
 				<h6>Genre - 1</h6>
-			</Description>
+			</div>
 		</MovieCardContainer>
 	);
 };
@@ -23,11 +23,7 @@ const MovieCardContainer = styled.div`
 	width: 150px;
 `;
 
-const Image = styled.div``;
-
-const Description = styled.div``;
-
-const Test = styled.div`
+const Raiting = styled.div`
 	position: relative;
 	width: 20px;
 	padding: 1px 8px 1px 8px;

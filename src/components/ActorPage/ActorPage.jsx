@@ -1,65 +1,58 @@
 import styled from 'styled-components';
 
-import MoviePlaceholderIMG from 'images/MoviePlaceholder.jpg';
+import PersonJPG from 'images/Person.jpg';
 import { MovieCard } from 'components/MovieCard/MovieCard';
-import { ActorCard } from 'components/ActorCard/ActorCard';
+import { Image } from 'common/Image/Image';
 
-import { LOREM, ACTORS, ALT, MOVIE_PHOTO } from 'constants';
+import { LOREM, PERSON_PHOTOS, MOVIE_PHOTO, RESOLUTION, ALT } from 'constants';
 import { translate } from 'helpers/translate';
-import { RESOLUTION } from 'constants';
 
-export const MoviePage = ({ language }) => {
+export const ActorPage = ({ language }) => {
 	return (
 		<Container>
 			<Details>
-				<div>
-					<img
-						src={MoviePlaceholderIMG}
-						alt={ALT.MOVIE}
-						width={RESOLUTION.BIG}
-					/>
-				</div>
+				<Image src={PersonJPG} alt={ALT.PERSON} width={RESOLUTION.BIG} />
 				<Information>
 					<Description>
 						<TextCointainer>
-							<span>{translate(language).MOVIE_PAGE.TITLE}</span>
-							<span>{translate(language).MOVIE_PAGE.MOVIE_TITLE}</span>
+							<StyledH1>{translate(language).ACTOR_PAGE.NAME}</StyledH1>
 						</TextCointainer>
 						<TextCointainer>
-							<span>{translate(language).MOVIE_PAGE.OVERVIEW}</span>
-							<span>{LOREM}</span>
-						</TextCointainer>
-						<TextCointainer>
-							<span>{translate(language).MOVIE_PAGE.DATE}</span>
+							<span>{translate(language).ACTOR_PAGE.BIRTHDAY}</span>
 							<span>2021-05-26</span>
 						</TextCointainer>
 						<TextCointainer>
-							<span>{translate(language).MOVIE_PAGE.REVENUE}</span>
-							<span>$ 42 600 000</span>
+							<span>{translate(language).ACTOR_PAGE.PLACE}</span>
+							<span>2021-05-26</span>
 						</TextCointainer>
 						<TextCointainer>
-							<span>{translate(language).MOVIE_PAGE.DURATION}</span>
-							<span>2:14</span>
+							<span>{translate(language).ACTOR_PAGE.BIOGRAPHY}</span>
+							<span>{LOREM}</span>
 						</TextCointainer>
 					</Description>
 					<Actors>
-						<h1>{translate(language).MOVIE_PAGE.TOP_BILLED_CAST}</h1>
+						<h1>{translate(language).ACTOR_PAGE.PHOTOS}</h1>
 						<ActorCardContainer>
-							{ACTORS.map((actors) => (
-								<ActorCard id={actors.id} />
+							{PERSON_PHOTOS.map((photo) => (
+								<Image
+									key={photo.id}
+									src={PersonJPG}
+									alt={ALT.PERSON}
+									width={RESOLUTION.MEDIUM}
+								/>
 							))}
 						</ActorCardContainer>
 					</Actors>
 				</Information>
 			</Details>
-			<Recommendations>
-				<h1>{translate(language).MOVIE_PAGE.RECOMMENDATIONS}</h1>
+			<KnownBy>
+				<h1>{translate(language).ACTOR_PAGE.KNOWN_BY}</h1>
 				<MovieCardContainer>
 					{MOVIE_PHOTO.map((movie) => (
 						<MovieCard key={movie.id} />
 					))}
 				</MovieCardContainer>
-			</Recommendations>
+			</KnownBy>
 		</Container>
 	);
 };
@@ -71,7 +64,7 @@ const Container = styled.div`
 	justify-content: center;
 `;
 
-const Recommendations = styled.div`
+const KnownBy = styled.div`
 	display: flex;
 	flex-direction: column;
 	color: white;
@@ -113,4 +106,8 @@ const TextCointainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding-bottom: 30px;
+`;
+
+const StyledH1 = styled.h1`
+	margin: 0;
 `;
