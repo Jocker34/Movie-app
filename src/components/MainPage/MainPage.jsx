@@ -79,7 +79,7 @@ const Container = styled.div`
 const Movies = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start;
 `;
 
 const StyledPagination = styled(Pagination)`

@@ -13,6 +13,7 @@ export const MoviePage = ({ language }) => {
 		<Container>
 			<Details>
 				<div>
+					<Raiting>9.9</Raiting>
 					<img
 						src={MoviePlaceholderIMG}
 						alt={ALT.MOVIE}
@@ -123,4 +124,15 @@ const TextCointainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding-bottom: 30px;
+`;
+
+const Raiting = styled.div`
+	position: relative;
+	width: 20px;
+	padding: 1px 8px 1px 8px;
+	background-color: #40b43c;
+	bottom: -30px;
+	right: 10px;
+	border-radius: 4px;
+	color: white;
 `;
