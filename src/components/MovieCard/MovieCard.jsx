@@ -1,13 +1,22 @@
 import styled from 'styled-components';
+import Badge from '@mui/material/Badge';
 
 import { MoviePlaceholder } from './Placeholder/Placeholder';
 
-export const MovieCard = ({ title }) => {
+export const MovieCard = ({ title, className }) => {
 	return (
-		<MovieCardContainer>
+		<MovieCardContainer className={className}>
 			<div>
-				<Raiting>9.9</Raiting>
-				<MoviePlaceholder />
+				<StyledBadge
+					anchorOrigin={{
+						vertical: 'top',
+						horizontal: 'left',
+					}}
+					badgeContent={9.9}
+					color='success'
+				>
+					<MoviePlaceholder />
+				</StyledBadge>
 			</div>
 			<div>
 				<h5>{title}</h5>
@@ -19,16 +28,14 @@ export const MovieCard = ({ title }) => {
 
 const MovieCardContainer = styled.div`
 	color: white;
-	margin: 30px 25px 0 25px;
 	width: 150px;
 `;
 
-const Raiting = styled.div`
-	position: relative;
-	width: 20px;
-	padding: 1px 8px 1px 8px;
-	background-color: #40b43c;
-	bottom: -30px;
-	right: 10px;
-	border-radius: 4px;
-`;
+const StyledBadge = styled(Badge)(() => ({
+	'& .MuiBadge-badge': {
+		borderRadius: '4px',
+		top: '15px',
+		left: '8px',
+		backgroundColor: '#40b43c',
+	},
+}));

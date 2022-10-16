@@ -1,13 +1,7 @@
-import styled from 'styled-components';
-
 export const Image = ({ src, alt, width }) => {
 	return (
-		<Container>
+		<div>
 			<img src={src} alt={alt} width={width} />
-		</Container>
+		</div>
 	);
 };
-
-const Container = styled.div`
-	margin: 0 15px 0 15px;
-`;

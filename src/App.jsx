@@ -1,24 +1,23 @@
 import { useState } from 'react';
 
-import { Header } from './components/Header/Header';
-// import { MovieCard } from 'components/MovieCard/MovieCard';
-// import { MoviePage } from 'components/MoviePage/MoviePage';
-import { MainPage } from 'components/MainPage/MainPage';
-// import { ActorPage } from 'components/ActorPage/ActorPage';
-
+import { Header } from 'pages/Header';
+import { MovieCard } from 'components/MovieCard/MovieCard';
+import { MoviePage } from 'pages/MoviePage';
+import { MainPage } from 'pages/MainPage';
+import { ActorPage } from 'pages/ActorPage';
+import LanguageContext from 'helpers/languageContext';
 const App = () => {
 	const [search, setSearch] = useState('');
 	const [language, setLanguage] = useState('EN');
+	const value = { language, setLanguage };
 	return (
 		<>
-			<Header
-				setSearch={setSearch}
-				language={language}
-				setLanguage={setLanguage}
-			/>
-			<MainPage search={search} />
-			{/* <MoviePage language={language} /> */}
-			{/* <ActorPage language={language} /> */}
+			<LanguageContext.Provider value={value}>
+				<Header setSearch={setSearch} />
+				<MainPage search={search} />
+				{/* <MoviePage  /> */}
+				{/* <ActorPage /> */}
+			</LanguageContext.Provider>
 		</>
 	);
 };

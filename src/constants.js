@@ -46,6 +46,17 @@ export const ACTORS = [
 	},
 ];
 
+export const ITEMS = [
+	{
+		id: 1,
+		value: 'PL',
+	},
+	{
+		id: 2,
+		value: 'EN',
+	},
+];
+
 export const PERSON_PHOTOS = [
 	{
 		id: 1,
