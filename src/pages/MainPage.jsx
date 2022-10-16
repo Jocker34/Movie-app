@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 
