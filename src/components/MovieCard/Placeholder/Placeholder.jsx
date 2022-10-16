@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import MoviePlaceholderIMG from 'images/MoviePlaceholder.jpg';
@@ -6,18 +6,13 @@ import MovieHoverJPG from 'images/MovieHover.jpg';
 import { RESOLUTION, ALT } from 'constants';
 
 export const MoviePlaceholder = () => {
-	const [hover, setHover] = useState(false);
-	return (
-		<StyledImage
-			src={hover ? MovieHoverJPG : MoviePlaceholderIMG}
-			alt={ALT.MOVIE}
-			width={RESOLUTION.MEDIUM}
-			onMouseOver={() => setHover(true)}
-			onMouseOut={() => setHover(false)}
-		/>
-	);
+	return <StyledImage alt={ALT.MOVIE} width={RESOLUTION.MEDIUM} />;
 };
 
 const StyledImage = styled.img`
 	border-radius: 5px;
+	content: url(${MoviePlaceholderIMG});
+	:hover {
+		content: url(${MovieHoverJPG});
+	}
 `;
