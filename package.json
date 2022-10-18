@@ -60,7 +60,7 @@
           "semi": true,
           "jsxSingleQuote": true,
           "singleQuote": true,
-          "useTabs": true,
+          "tabWidth": 2,
           "endOfLine": "auto",
           "max-len": [
             "error",

@@ -9,34 +9,34 @@ import { MovieImage } from './moviePage/MovieImage';
 import LanguageContext from 'helpers/languageContext';
 
 export const MoviePage = () => {
-	const { language } = useContext(LanguageContext);
+  const { language } = useContext(LanguageContext);
 
-	return (
-		<Container>
-			<Grid container direction='row' justifyContent='center' sx={style}>
-				<MovieImage />
-				<Information>
-					<Description language={language} />
-					<TopBilledCast language={language} />
-				</Information>
-			</Grid>
-			<Recommendations language={language} />
-		</Container>
-	);
+  return (
+    <Container>
+      <Grid container direction='row' justifyContent='center' sx={style}>
+        <MovieImage />
+        <Information>
+          <Description language={language} />
+          <TopBilledCast language={language} />
+        </Information>
+      </Grid>
+      <Recommendations language={language} />
+    </Container>
+  );
 };
 
 const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	background-color: #181414;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #181414;
+  justify-content: center;
 `;
 
 const Information = styled.div`
-	margin-left: 30px;
-	width: 1150px;
+  margin-left: 30px;
+  width: 1150px;
 `;
 
 const style = {
-	marginTop: '30px',
+  marginTop: '30px',
 };
