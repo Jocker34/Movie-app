@@ -1,11 +1,16 @@
+import { useContext } from 'react';
+
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import { ActorCard } from 'components/ActorCard/ActorCard';
 import { translate } from 'helpers/translate';
+import LanguageContext from 'helpers/languageContext';
 import { ACTORS } from 'constants';
 
-export const TopBilledCast = ({ language }) => {
+export const TopBilledCast = () => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <Grid item xs={12}>
       <Typography variant='h4' sx={Bold}>

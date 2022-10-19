@@ -1,17 +1,14 @@
-import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Grid from '@mui/material/Grid';
 
 import { Description } from './actorPage/Description';
 import { KnowBy } from './actorPage/KnowBy';
 import { Photos } from './actorPage/Photos';
-import LanguageContext from 'helpers/languageContext';
 
 import PersonJPG from 'images/Person.jpg';
 import { RESOLUTION, ALT } from 'constants';
 
 export const ActorPage = () => {
-  const { language } = useContext(LanguageContext);
   return (
     <Container>
       <Grid container direction='row' justifyContent='center' sx={style}>
@@ -19,7 +16,7 @@ export const ActorPage = () => {
           <img src={PersonJPG} alt={ALT.PERSON} width={RESOLUTION.BIG} />
         </div>
         <Information>
-          <Description language={language} />
+          <Description />
           <Photos />
         </Information>
       </Grid>

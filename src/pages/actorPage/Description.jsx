@@ -1,11 +1,15 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import { translate } from 'helpers/translate';
+import LanguageContext from 'helpers/languageContext';
 import { LOREM } from 'constants';
 
-export const Description = ({ language }) => {
+export const Description = () => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <Grid
       container

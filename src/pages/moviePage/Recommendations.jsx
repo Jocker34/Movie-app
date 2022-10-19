@@ -1,12 +1,17 @@
+import { useContext } from 'react';
+
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import { MovieCard } from 'components/MovieCard/MovieCard';
 
 import { translate } from 'helpers/translate';
+import LanguageContext from 'helpers/languageContext';
 import { MOVIE_PHOTO } from 'constants';
 
-export const Recommendations = ({ language }) => {
+export const Recommendations = () => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <Grid item xs={12} justifyContent='center'>
       <Typography variant='h4' sx={style}>

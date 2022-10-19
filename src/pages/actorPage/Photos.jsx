@@ -1,11 +1,15 @@
+import { useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import PersonJPG from 'images/Person.jpg';
 import { PERSON_PHOTOS, RESOLUTION, ALT } from 'constants';
 import { translate } from 'helpers/translate';
+import LanguageContext from 'helpers/languageContext';
 
-export const Photos = ({ language }) => {
+export const Photos = () => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <Grid item xs={12}>
       <Typography variant='h4' sx={Bold}>

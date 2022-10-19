@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
@@ -23,45 +23,33 @@ export const MainPage = ({ search }) => {
     setCurrentPage(parseInt(page));
   };
 
-  const movies = useMemo(() => {
-    if (
-      searchMovie(posts, search, indexOfFirstPost, indexOfLastPost).length !== 0
-    ) {
-      return (
-        <>
-          <Box sx={{ height: '100%' }}>
-            <Tabs posts={posts} setPosts={setPosts} />
-            <Movies>
-              {searchMovie(
-                posts,
-                search,
-                indexOfFirstPost,
-                indexOfLastPost
-              ).map((post) => (
-                <StyledMovieCard key={post.id} title={post.original_title} />
-              ))}
-            </Movies>
-            <StyledPagination
-              count={count}
-              onChange={(e) => handleOnChange(e.target.textContent)}
-              page={currentPage}
-              size='large'
-              hidePrevButton
-              hideNextButton
-            />
-          </Box>
-        </>
-      );
-    } else {
-      return (
-        <NoResult>
-          <h1>NO RESULTS FOUND</h1>
-        </NoResult>
-      );
-    }
-  }, [count, currentPage, indexOfFirstPost, indexOfLastPost, posts, search]);
-
-  return <Container>{movies}</Container>;
+  return searchMovie(posts, search, indexOfFirstPost, indexOfLastPost)
+    .length !== 0 ? (
+    <Container>
+      <Box sx={{ height: '100%' }}>
+        <Tabs posts={posts} setPosts={setPosts} />
+        <Movies>
+          {searchMovie(posts, search, indexOfFirstPost, indexOfLastPost).map(
+            (post) => (
+              <StyledMovieCard key={post.id} title={post.original_title} />
+            )
+          )}
+        </Movies>
+        <StyledPagination
+          count={count}
+          onChange={(e) => handleOnChange(e.target.textContent)}
+          page={currentPage}
+          size='large'
+          hidePrevButton
+          hideNextButton
+        />
+      </Box>
+    </Container>
+  ) : (
+    <NoResult>
+      <h1>NO RESULTS FOUND</h1>
+    </NoResult>
+  );
 };
 
 const Container = styled.div`

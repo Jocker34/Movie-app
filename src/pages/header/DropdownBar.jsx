@@ -30,11 +30,7 @@ export const DropdownBar = () => {
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        sx={{
-          color: 'white',
-          border: '1px solid white',
-          fontWeight: 'bold',
-        }}
+        sx={ButtonStyle}
       >
         {language}
       </Button>
@@ -60,3 +56,9 @@ export const DropdownBar = () => {
 const Container = styled.div`
   margin: 20px 85px 20px 0;
 `;
+
+const ButtonStyle = {
+  color: 'white',
+  border: '1px solid white',
+  fontWeight: 'bold',
+};
