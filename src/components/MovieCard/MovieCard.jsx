@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import Badge from '@mui/material/Badge';
 
+import Typography from '@mui/material/Typography';
 import { MoviePlaceholder } from './Placeholder/Placeholder';
 
 export const MovieCard = ({ title, className }) => {
   return (
-    <MovieCardContainer className={className}>
+    <Container className={className}>
       <div>
         <StyledBadge
           anchorOrigin={{
@@ -19,16 +20,26 @@ export const MovieCard = ({ title, className }) => {
         </StyledBadge>
       </div>
       <div>
-        <h5>{title}</h5>
-        <h6>Genre - 1</h6>
+        <TextCointainer>
+          <Typography variant='subtitle1'>{title}</Typography>
+        </TextCointainer>
+        <TextCointainer>
+          <Typography variant='subtitle2' sx={{ fontSize: 'small' }}>
+            Genre - 1
+          </Typography>
+        </TextCointainer>
       </div>
-    </MovieCardContainer>
+    </Container>
   );
 };
 
-const MovieCardContainer = styled.div`
+const Container = styled.div`
   color: white;
   width: 150px;
+`;
+
+const TextCointainer = styled.div`
+  padding-top: 10px;
 `;
 
 const StyledBadge = styled(Badge)(() => ({
