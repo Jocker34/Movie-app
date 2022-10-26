@@ -1,12 +1,10 @@
-import { useContext } from 'react';
 import { styled, alpha } from '@mui/material/styles';
+import { useTranslation } from 'helpers/useTranslation';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import LanguageContext from 'helpers/languageContext';
-import { translate } from 'helpers/translate';
 
 export const SerachBar = ({ setSearch }) => {
-  const { language } = useContext(LanguageContext);
+  const { translate } = useTranslation();
 
   const handleOnChange = (e) => {
     e.target.value ? setSearch(e.target.value) : setSearch('');
@@ -18,7 +16,7 @@ export const SerachBar = ({ setSearch }) => {
         <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
-        placeholder={translate(language).INPUT.SERACH}
+        placeholder={translate('SERACH')}
         inputProps={{ 'aria-label': 'search' }}
         onChange={handleOnChange}
       />

@@ -1,19 +1,17 @@
-import { useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import PersonJPG from 'images/Person.jpg';
+import { useTranslation } from 'helpers/useTranslation';
 import { PERSON_PHOTOS, RESOLUTION, ALT } from 'constants';
-import { translate } from 'helpers/translate';
-import LanguageContext from 'helpers/languageContext';
 
 export const Photos = () => {
-  const { language } = useContext(LanguageContext);
+  const { translate } = useTranslation();
 
   return (
     <Grid item xs={12}>
       <Typography variant='h4' sx={Bold}>
-        {translate(language).ACTOR_PAGE.PHOTOS}
+        {translate('PHOTOS')}
       </Typography>
       <Grid container justifyContent='flexStart' spacing={4}>
         {PERSON_PHOTOS.map((photo) => (

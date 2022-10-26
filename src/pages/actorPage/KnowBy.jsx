@@ -2,15 +2,17 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import { MovieCard } from 'components/MovieCard/MovieCard';
+import { useTranslation } from 'helpers/useTranslation';
 
 import { MOVIE_PHOTO } from 'constants';
-import { translate } from 'helpers/translate';
 
-export const KnowBy = ({ language }) => {
+export const KnowBy = () => {
+  const { translate } = useTranslation();
+
   return (
     <Grid item xs={12} justifyContent='center'>
       <Typography variant='h4' sx={style}>
-        {translate(language).ACTOR_PAGE.KNOWN_BY}
+        {translate('KNOWN_BY')}
       </Typography>
       <Grid container justifyContent='center' spacing={3}>
         {MOVIE_PHOTO.map((movie) => (

@@ -1,21 +1,18 @@
-import { useContext } from 'react';
-
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import { MovieCard } from 'components/MovieCard/MovieCard';
 
-import { translate } from 'helpers/translate';
-import LanguageContext from 'helpers/languageContext';
 import { MOVIE_PHOTO } from 'constants';
+import { useTranslation } from 'helpers/useTranslation';
 
 export const Recommendations = () => {
-  const { language } = useContext(LanguageContext);
+  const { translate } = useTranslation();
 
   return (
     <Grid item xs={12} justifyContent='center'>
       <Typography variant='h4' sx={style}>
-        {translate(language).MOVIE_PAGE.RECOMMENDATIONS}
+        {translate('RECOMMENDATIONS')}
       </Typography>
       <Grid container justifyContent='center' spacing={3}>
         {MOVIE_PHOTO.map((movie) => (

@@ -1,14 +1,12 @@
-import { useContext } from 'react';
 import styled from 'styled-components';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import { translate } from 'helpers/translate';
-import LanguageContext from 'helpers/languageContext';
 import { LOREM } from 'constants';
+import { useTranslation } from 'helpers/useTranslation';
 
 export const Description = () => {
-  const { language } = useContext(LanguageContext);
+  const { translate } = useTranslation();
 
   return (
     <Grid
@@ -19,26 +17,18 @@ export const Description = () => {
       sx={style}
     >
       <TextCointainer>
-        <Typography variant='h3'>
-          {translate(language).ACTOR_PAGE.NAME}
-        </Typography>
+        <Typography variant='h3'>{translate('NAME')}</Typography>
       </TextCointainer>
       <TextCointainer>
-        <Typography variant='subtitle2'>
-          {translate(language).ACTOR_PAGE.BIRTHDAY}
-        </Typography>
+        <Typography variant='subtitle2'>{translate('BIRTHDAY')}</Typography>
         <Typography variant='body1'>2021-05-26</Typography>
       </TextCointainer>
       <TextCointainer>
-        <Typography variant='subtitle2'>
-          {translate(language).ACTOR_PAGE.PLACE}
-        </Typography>
+        <Typography variant='subtitle2'>{translate('PLACE')}</Typography>
         <Typography variant='body1'>2021-05-26</Typography>
       </TextCointainer>
       <TextCointainer>
-        <Typography variant='subtitle2'>
-          {translate(language).ACTOR_PAGE.BIOGRAPHY}
-        </Typography>
+        <Typography variant='subtitle2'>{translate('BIOGRAPHY')}</Typography>
         <Typography variant='body1'>{LOREM}</Typography>
       </TextCointainer>
     </Grid>

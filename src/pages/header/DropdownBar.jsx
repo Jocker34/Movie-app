@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import LanguageContext from 'helpers/languageContext';
+import { useTranslation } from 'helpers/useTranslation';
 import { ITEMS } from 'constants';
 
 export const DropdownBar = () => {
-  const { language, setLanguage } = useContext(LanguageContext);
+  const { language, setLanguage } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -21,7 +21,6 @@ export const DropdownBar = () => {
     setLanguage(item.value);
     handleClose();
   };
-
   return (
     <Container>
       <Button
