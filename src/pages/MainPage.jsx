@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 
-import { mockedMovies } from 'movies';
-import { MovieCard } from 'components/MovieCard/MovieCard';
+import { topRatedMovies } from 'topRatedMovies';
+import { MovieCard } from 'components/MovieCard';
 import { Tabs } from './mainPage/Tabs';
 
 import { searchMovie } from 'helpers/serarchMovie';
 
 export const MainPage = ({ search }) => {
-  const [posts, setPosts] = useState(mockedMovies);
+  const [posts, setPosts] = useState(topRatedMovies);
   const [currentPage, setCurrentPage] = useState(1);
 
   const postsPerPage = 30;
@@ -26,12 +26,17 @@ export const MainPage = ({ search }) => {
   return searchMovie(posts, search, indexOfFirstPost, indexOfLastPost)
     .length !== 0 ? (
     <Container>
-      <Box sx={{ height: '100%' }}>
+      <Box>
         <Tabs posts={posts} setPosts={setPosts} />
         <Movies>
           {searchMovie(posts, search, indexOfFirstPost, indexOfLastPost).map(
             (post) => (
-              <StyledMovieCard key={post.id} title={post.original_title} />
+              <StyledMovieCard
+                key={post.id}
+                title={post.original_title}
+                image={post.backdrop_path}
+                rate={post.vote_average}
+              />
             )
           )}
         </Movies>
@@ -63,6 +68,7 @@ const Movies = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  min-height: 80vh;
 `;
 
 const StyledPagination = styled(Pagination)`

@@ -5,6 +5,7 @@ import { Description } from './moviePage/Description';
 import { TopBilledCast } from './moviePage/TopBilledCast';
 import { Recommendations } from './moviePage/Recommendations';
 import { MovieImage } from './moviePage/MovieImage';
+import { Images } from './moviePage/Images';
 
 export const MoviePage = () => {
   return (
@@ -14,6 +15,7 @@ export const MoviePage = () => {
         <Information>
           <Description />
           <TopBilledCast />
+          <Images />
         </Information>
       </Grid>
       <Recommendations />
@@ -29,8 +31,8 @@ const Container = styled.div`
 `;
 
 const Information = styled.div`
-  margin-left: 30px;
-  width: 1150px;
+  margin: 0 30px 0 30px;
+  max-width: 1150px;
 `;
 
 const style = {

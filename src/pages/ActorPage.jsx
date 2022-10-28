@@ -33,8 +33,8 @@ const Container = styled.div`
 `;
 
 const Information = styled.div`
-  margin-left: 30px;
-  width: 1150px;
+  margin: 0 30px 0 30px;
+  max-width: 1150px;
 `;
 
 const style = {

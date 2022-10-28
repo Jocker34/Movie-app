@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import Badge from '@mui/material/Badge';
 
 import Typography from '@mui/material/Typography';
-import { MoviePlaceholder } from './Placeholder/Placeholder';
+import { MoviePlaceholder } from './movieCard/Placeholder';
 
-export const MovieCard = ({ title, className }) => {
+export const MovieCard = ({ title, className, image, rate }) => {
   return (
     <Container className={className}>
       <div>
@@ -13,10 +13,10 @@ export const MovieCard = ({ title, className }) => {
             vertical: 'top',
             horizontal: 'left',
           }}
-          badgeContent={9.9}
+          badgeContent={rate}
           color='success'
         >
-          <MoviePlaceholder />
+          <MoviePlaceholder image={image} />
         </StyledBadge>
       </div>
       <div>

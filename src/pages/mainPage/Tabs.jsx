@@ -8,10 +8,10 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { sortByPopular, sortByRated, sortByUpComing } from 'helpers/sortMovies';
 
 export const Tabs = ({ posts, setPosts }) => {
-  const [alignment, setAlignment] = useState('');
+  const [active, setActive] = useState('');
 
-  const handleToggleButtons = (event, newAlignment) => {
-    setAlignment(newAlignment);
+  const handleToggleButtons = (event, active) => {
+    setActive(active);
   };
 
   return (
@@ -20,7 +20,7 @@ export const Tabs = ({ posts, setPosts }) => {
         color='secondary'
         exclusive
         aria-label='Platform'
-        value={alignment}
+        value={active}
         onChange={handleToggleButtons}
       >
         <ToggleButton
@@ -48,5 +48,4 @@ export const Tabs = ({ posts, setPosts }) => {
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)`
   background-color: white;
-  width: fit-content;
 `;

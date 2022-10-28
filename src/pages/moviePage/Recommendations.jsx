@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import { MovieCard } from 'components/MovieCard/MovieCard';
+import { MovieCard } from 'components/MovieCard';
 
 import { MOVIE_PHOTO } from 'constants';
 import { useTranslation } from 'helpers/useTranslation';
