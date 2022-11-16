@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 
 import { ActorCard } from 'components/ActorCard';
-import { useTranslation } from 'helpers/useTranslation';
+import { useTranslation } from 'hooks/useTranslation';
 import { ACTORS } from 'constants';
 
 export const TopBilledCast = () => {

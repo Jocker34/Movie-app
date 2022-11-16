@@ -13,8 +13,8 @@ const App = () => {
     <LanguageContext.Provider value={value}>
       <Header setSearch={setSearch} />
       <MainPage search={search} />
-      {/* <MoviePage />
-      <ActorPage /> */}
+      {/* <MoviePage /> */}
+      {/* <ActorPage /> */}
     </LanguageContext.Provider>
   );
 };

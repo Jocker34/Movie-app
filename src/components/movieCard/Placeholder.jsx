@@ -3,33 +3,18 @@ import Button from '@mui/material/Button';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import MoviePlaceholderIMG from 'images/MoviePlaceholder.jpg';
-import { RESOLUTION, ALT } from 'constants';
+import { RESOLUTION } from 'constants';
 
 export const MoviePlaceholder = ({ image }) => {
   return (
     <Container>
       <StyledImage
-        src={
-          image
-            ? `https://image.tmdb.org/t/p/w500${image}`
-            : MoviePlaceholderIMG
-        }
-        alt={ALT.MOVIE}
+        src={MoviePlaceholderIMG}
         width={RESOLUTION.MEDIUM}
         height='206'
       />
 
-      <StyledButton
-        variant='contained'
-        color='success'
-        sx={{
-          position: 'absolute',
-          top: '40%',
-          left: '30%',
-          borderRadius: '10px',
-          display: 'none',
-        }}
-      >
+      <StyledButton variant='contained' color='success' sx={ButtonStyle}>
         <PlayArrowIcon />
       </StyledButton>
     </Container>
@@ -49,3 +34,11 @@ const StyledImage = styled.img`
     filter: brightness(50%);
   }
 `;
+
+const ButtonStyle = {
+  position: 'absolute',
+  top: '40%',
+  left: '30%',
+  borderRadius: '10px',
+  display: 'none',
+};

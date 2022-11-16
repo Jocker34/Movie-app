@@ -1,5 +1,5 @@
 import { styled, alpha } from '@mui/material/styles';
-import { useTranslation } from 'helpers/useTranslation';
+import { useTranslation } from 'hooks/useTranslation';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 

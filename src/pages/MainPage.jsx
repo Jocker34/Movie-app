@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
+import Grid from '@mui/material/Grid';
 
 import { topRatedMovies } from 'topRatedMovies';
 import { MovieCard } from 'components/MovieCard';
@@ -13,7 +14,7 @@ export const MainPage = ({ search }) => {
   const [posts, setPosts] = useState(topRatedMovies);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const postsPerPage = 30;
+  const postsPerPage = 20;
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
@@ -28,7 +29,7 @@ export const MainPage = ({ search }) => {
     <Container>
       <Box>
         <Tabs posts={posts} setPosts={setPosts} />
-        <Movies>
+        <Grid container justifyContent='center' sx={{ minHeight: '80vh' }}>
           {searchMovie(posts, search, indexOfFirstPost, indexOfLastPost).map(
             (post) => (
               <StyledMovieCard
@@ -39,7 +40,7 @@ export const MainPage = ({ search }) => {
               />
             )
           )}
-        </Movies>
+        </Grid>
         <StyledPagination
           count={count}
           onChange={(e) => handleOnChange(e.target.textContent)}
@@ -56,34 +57,25 @@ export const MainPage = ({ search }) => {
     </NoResult>
   );
 };
+const Container = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '40px 60px 0 60px',
+});
 
-const Container = styled.div`
-  display: flex;
-  background-color: #181414;
-  flex-direction: column;
-  padding: 40px 60px 0 60px;
-`;
+const StyledPagination = styled(Pagination)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  button: {
+    color: theme.palette.common.white,
+  },
+}));
 
-const Movies = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  min-height: 80vh;
-`;
-
-const StyledPagination = styled(Pagination)`
-  display: flex;
-  justify-content: center;
-  button {
-    color: white;
-  }
-`;
-
-const NoResult = styled.div`
-  display: flex;
-  color: white;
-  justify-content: center;
-`;
+const NoResult = styled('div')({
+  display: 'flex',
+  color: 'white',
+  justifyContent: 'center',
+});
 
 const StyledMovieCard = styled(MovieCard)`
   margin: 30px 25px 0 25px;

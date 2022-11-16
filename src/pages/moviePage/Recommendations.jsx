@@ -3,8 +3,8 @@ import Grid from '@mui/material/Grid';
 
 import { MovieCard } from 'components/MovieCard';
 
-import { MOVIE_PHOTO } from 'constants';
-import { useTranslation } from 'helpers/useTranslation';
+import { mockMoviePhoto } from 'mocks';
+import { useTranslation } from 'hooks/useTranslation';
 
 export const Recommendations = () => {
   const { translate } = useTranslation();
@@ -15,7 +15,7 @@ export const Recommendations = () => {
         {translate('RECOMMENDATIONS')}
       </Typography>
       <Grid container justifyContent='center' spacing={3}>
-        {MOVIE_PHOTO.map((movie) => (
+        {mockMoviePhoto.map((movie) => (
           <Grid key={movie} item>
             <MovieCard key={movie.id} />
           </Grid>

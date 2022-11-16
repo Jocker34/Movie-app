@@ -3,10 +3,22 @@ import styled from 'styled-components';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useTranslation } from 'helpers/useTranslation';
-import { ITEMS } from 'constants';
+import { useTranslation } from 'hooks/useTranslation';
 
-export const DropdownBar = () => {
+const languageOptions = [
+  {
+    code: 'pl-PL',
+    label: 'Polish (PL)',
+    value: 'PL',
+  },
+  {
+    code: 'en-US',
+    label: 'English (US)',
+    value: 'EN',
+  },
+];
+
+export const LanguageDropdown = () => {
   const { language, setLanguage } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -42,8 +54,8 @@ export const DropdownBar = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        {ITEMS.map((item) => (
-          <MenuItem key={item.id} onClick={() => changeLanguage(item)}>
+        {languageOptions.map((item) => (
+          <MenuItem key={item.code} onClick={() => changeLanguage(item)}>
             {item.value}
           </MenuItem>
         ))}

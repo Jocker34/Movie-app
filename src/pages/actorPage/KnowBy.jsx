@@ -2,9 +2,9 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import { MovieCard } from 'components/MovieCard';
-import { useTranslation } from 'helpers/useTranslation';
+import { useTranslation } from 'hooks/useTranslation';
 
-import { MOVIE_PHOTO } from 'constants';
+import { mockMoviePhoto } from 'mocks';
 
 export const KnowBy = () => {
   const { translate } = useTranslation();
@@ -15,7 +15,7 @@ export const KnowBy = () => {
         {translate('KNOWN_BY')}
       </Typography>
       <Grid container justifyContent='center' spacing={3}>
-        {MOVIE_PHOTO.map((movie) => (
+        {mockMoviePhoto.map((movie) => (
           <Grid key={movie} item>
             <MovieCard key={movie.id} />
           </Grid>

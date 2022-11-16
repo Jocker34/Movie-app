@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 
 import ToggleButton from '@mui/material/ToggleButton';
@@ -46,6 +46,6 @@ export const Tabs = ({ posts, setPosts }) => {
   );
 };
 
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)`
-  background-color: white;
-`;
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
+  backgroundColor: theme.palette.common.white,
+}));

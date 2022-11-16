@@ -1,8 +1,8 @@
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import { useTranslation } from 'helpers/useTranslation';
-import { IMAGES } from 'constants';
+import { useTranslation } from 'hooks/useTranslation';
+import { mockImages } from 'mocks';
 import ImageJPG from 'images/Image.jpg';
 
 export const Images = () => {
@@ -14,7 +14,7 @@ export const Images = () => {
         {translate('IMAGES')}
       </Typography>
       <Grid container justifyContent='flexStart' spacing={4}>
-        {IMAGES.map((images) => (
+        {mockImages.map((images) => (
           <Grid key={images} item>
             <img id={images.id} alt={'movie'} src={ImageJPG} width='240px' />
           </Grid>

@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import { LOREM } from 'constants';
-import { useTranslation } from 'helpers/useTranslation';
+import { useTranslation } from 'hooks/useTranslation';
 
 export const Description = () => {
   const { translate } = useTranslation();

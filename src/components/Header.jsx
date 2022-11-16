@@ -2,17 +2,13 @@ import Grid from '@mui/material/Grid';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { DropdownBar } from './header/DropdownBar';
+import { styled } from '@mui/material/styles';
+import { LanguageDropdown } from './header/LanguageDropdown ';
 import { SerachBar } from './header/SearchBar';
 
 export const Header = ({ setSearch }) => {
   return (
-    <AppBar
-      position='static'
-      sx={{
-        backgroundColor: '#282424',
-      }}
-    >
+    <StyledAppBar>
       <Toolbar>
         <Grid
           container
@@ -24,9 +20,14 @@ export const Header = ({ setSearch }) => {
             TITLE
           </Typography>
           <SerachBar setSearch={setSearch} />
-          <DropdownBar />
+          <LanguageDropdown />
         </Grid>
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
   );
 };
+
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  backgroundColor: theme.palette.grey[900],
+  position: 'static',
+}));

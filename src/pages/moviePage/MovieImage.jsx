@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 
 import MoviePlaceholderIMG from 'images/MoviePlaceholder.jpg';
@@ -23,11 +23,11 @@ export const MovieImage = () => {
   );
 };
 
-const StyledBadge = styled(Badge)(() => ({
+const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     borderRadius: '4px',
     top: '15px',
     left: '8px',
-    backgroundColor: '#40b43c',
+    backgroundColor: theme.palette.success.light,
   },
 }));
