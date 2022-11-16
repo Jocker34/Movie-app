@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 
 import Typography from '@mui/material/Typography';
@@ -33,20 +33,20 @@ export const MovieCard = ({ title, className, image, rate }) => {
   );
 };
 
-const Container = styled.div`
-  color: white;
-  width: 150px;
-`;
+const Container = styled('div')(({ theme }) => ({
+  color: theme.palette.common.white,
+  width: '150px',
+}));
 
 const TextCointainer = styled.div`
   padding-top: 10px;
 `;
 
-const StyledBadge = styled(Badge)(() => ({
+const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     borderRadius: '4px',
     top: '15px',
     left: '8px',
-    backgroundColor: '#40b43c',
+    backgroundColor: theme.palette.success.light,
   },
 }));
