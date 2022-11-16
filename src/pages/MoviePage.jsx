@@ -26,7 +26,6 @@ export const MoviePage = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #181414;
   justify-content: center;
 `;
 
