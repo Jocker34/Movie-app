@@ -38,9 +38,9 @@ const Container = styled('div')(({ theme }) => ({
   width: '150px',
 }));
 
-const TextCointainer = styled.div`
-  padding-top: 10px;
-`;
+const TextCointainer = styled('div')(() => ({
+  paddingTop: '10px',
+}));
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
