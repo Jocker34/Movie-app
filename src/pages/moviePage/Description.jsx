@@ -14,7 +14,6 @@ export const Description = () => {
       direction='column'
       justifyContent='flex-start'
       alignItems='flex-start'
-      sx={style}
     >
       <TextCointainer>
         <Typography variant='subtitle2'>{translate('TITLE')}</Typography>
@@ -41,11 +40,5 @@ export const Description = () => {
 };
 
 const TextCointainer = styled.div`
-  display: flex;
-  flex-direction: column;
   padding-bottom: 30px;
 `;
-
-const style = {
-  color: 'white',
-};

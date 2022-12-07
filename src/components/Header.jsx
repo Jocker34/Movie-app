@@ -8,7 +8,7 @@ import { SerachBar } from './header/SearchBar';
 
 export const Header = ({ setSearch }) => {
   return (
-    <StyledAppBar>
+    <StyledAppBar position='static'>
       <Toolbar>
         <Grid
           container
@@ -29,5 +29,4 @@ export const Header = ({ setSearch }) => {
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.grey[900],
-  position: 'static',
 }));

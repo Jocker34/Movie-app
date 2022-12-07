@@ -13,14 +13,14 @@ export const TopBilledCast = () => {
     <Grid item xs={12}>
       <Grid container spacing={2}>
         <Grid item xs={10}>
-          <Typography variant='h4' sx={Bold}>
+          <Typography variant='h4' sx={{ marginBottom: '30px' }}>
             {translate('TOP_BILLED_CAST')}
           </Typography>
         </Grid>
         <Grid sx={{ margin: 'auto' }}>
           <Button
             variant='outlined'
-            sx={{ color: 'white', border: '1px solid white' }}
+            sx={{ color: 'common.white', border: '1px solid white' }}
           >
             Show All
           </Button>
@@ -28,18 +28,11 @@ export const TopBilledCast = () => {
       </Grid>
       <Grid container justifyContent='flexStart' spacing={4}>
         {ACTORS.map((actors) => (
-          <Grid key={actors} item>
-            <ActorCard id={actors.id} />
+          <Grid key={actors.id} item>
+            <ActorCard />
           </Grid>
         ))}
       </Grid>
     </Grid>
   );
-};
-
-const Bold = {
-  fontWeight: 'bold',
-  m: 1,
-  margin: '0 0 30px 0',
-  color: 'white',
 };

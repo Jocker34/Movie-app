@@ -41,7 +41,7 @@ export const LanguageDropdown = () => {
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        sx={ButtonStyle}
+        sx={style}
       >
         {language}
       </Button>
@@ -68,8 +68,8 @@ const Container = styled.div`
   margin: 20px 85px 20px 0;
 `;
 
-const ButtonStyle = {
-  color: 'white',
+const style = {
+  color: 'common.white',
   border: '1px solid white',
   fontWeight: 'bold',
 };

@@ -11,25 +11,18 @@ export const KnowBy = () => {
 
   return (
     <Grid item xs={12} justifyContent='center'>
-      <Typography variant='h4' sx={style}>
-        {translate('KNOWN_BY')}
-      </Typography>
+      <Grid container justifyContent='center'>
+        <Typography variant='h4' sx={{ marginBottom: '30px' }}>
+          {translate('KNOWN_BY')}
+        </Typography>
+      </Grid>
       <Grid container justifyContent='center' spacing={3}>
         {mockMoviePhoto.map((movie) => (
-          <Grid key={movie} item>
-            <MovieCard key={movie.id} />
+          <Grid key={movie.id} item>
+            <MovieCard />
           </Grid>
         ))}
       </Grid>
     </Grid>
   );
-};
-
-const style = {
-  fontWeight: 'bold',
-  m: 1,
-  margin: '0 0 30px 0',
-  color: 'white',
-  display: 'flex',
-  justifyContent: 'center',
 };

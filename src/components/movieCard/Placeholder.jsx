@@ -5,7 +5,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import MoviePlaceholderIMG from 'images/MoviePlaceholder.jpg';
 import { RESOLUTION } from 'constants';
 
-export const MoviePlaceholder = ({ image }) => {
+export const MoviePlaceholder = () => {
   return (
     <Container>
       <StyledImage
@@ -13,8 +13,7 @@ export const MoviePlaceholder = ({ image }) => {
         width={RESOLUTION.MEDIUM}
         height='206'
       />
-
-      <StyledButton variant='contained' color='success' sx={ButtonStyle}>
+      <StyledButton variant='contained' color='success' sx={style}>
         <PlayArrowIcon />
       </StyledButton>
     </Container>
@@ -35,7 +34,7 @@ const StyledImage = styled.img`
   }
 `;
 
-const ButtonStyle = {
+const style = {
   position: 'absolute',
   top: '40%',
   left: '30%',

@@ -11,8 +11,6 @@ export const ALT = {
   PERSON: 'person-placeholder',
 };
 
-export const CATEGORIES = ['Popular', 'Top rated', 'Upcoming'];
-
 export const ACTORS = [
   {
     id: 1,

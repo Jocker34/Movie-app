@@ -10,8 +10,13 @@ import { RESOLUTION, ALT } from 'constants';
 
 export const ActorPage = () => {
   return (
-    <Container>
-      <Grid container direction='row' justifyContent='center' sx={style}>
+    <>
+      <Grid
+        container
+        direction='row'
+        justifyContent='center'
+        sx={{ marginTop: '30px' }}
+      >
         <div>
           <img src={PersonJPG} alt={ALT.PERSON} width={RESOLUTION.BIG} />
         </div>
@@ -21,21 +26,11 @@ export const ActorPage = () => {
         </Information>
       </Grid>
       <KnowBy />
-    </Container>
+    </>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
 
 const Information = styled.div`
   margin: 0 30px 0 30px;
   max-width: 1150px;
 `;
-
-const style = {
-  marginTop: '30px',
-};

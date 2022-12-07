@@ -10,23 +10,16 @@ export const Images = () => {
 
   return (
     <Grid item xs={12}>
-      <Typography variant='h4' sx={Bold}>
+      <Typography variant='h4' sx={{ marginBottom: '30px' }}>
         {translate('IMAGES')}
       </Typography>
       <Grid container justifyContent='flexStart' spacing={4}>
         {mockImages.map((images) => (
-          <Grid key={images} item>
-            <img id={images.id} alt={'movie'} src={ImageJPG} width='240px' />
+          <Grid key={images.id} item>
+            <img alt={'movie'} src={ImageJPG} width='240px' />
           </Grid>
         ))}
       </Grid>
     </Grid>
   );
-};
-
-const Bold = {
-  fontWeight: 'bold',
-  m: 1,
-  margin: '0 0 30px 0',
-  color: 'white',
 };

@@ -5,8 +5,8 @@ import Pagination from '@mui/material/Pagination';
 import Grid from '@mui/material/Grid';
 
 import { topRatedMovies } from 'topRatedMovies';
-import { MovieCard } from 'components/MovieCard';
 import { Tabs } from './mainPage/Tabs';
+import { MovieCard } from 'components/MovieCard';
 
 import { searchMovie } from 'helpers/serarchMovie';
 
@@ -52,14 +52,12 @@ export const MainPage = ({ search }) => {
       </Box>
     </Container>
   ) : (
-    <NoResult>
+    <Grid container justifyContent='center' sx={{ color: 'common.white' }}>
       <h1>NO RESULTS FOUND</h1>
-    </NoResult>
+    </Grid>
   );
 };
 const Container = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
   padding: '40px 60px 0 60px',
 });
 
@@ -71,12 +69,6 @@ const StyledPagination = styled(Pagination)(({ theme }) => ({
   },
 }));
 
-const NoResult = styled('div')({
-  display: 'flex',
-  color: 'white',
-  justifyContent: 'center',
-});
-
-const StyledMovieCard = styled(MovieCard)`
-  margin: 30px 25px 0 25px;
-`;
+const StyledMovieCard = styled(MovieCard)(() => ({
+  margin: '30px 20px 0 20px',
+}));
