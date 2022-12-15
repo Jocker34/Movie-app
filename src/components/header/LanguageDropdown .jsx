@@ -65,7 +65,7 @@ export const LanguageDropdown = () => {
 };
 
 const Container = styled.div`
-  margin: 20px 85px 20px 0;
+  margin: 20px 0 20px 0;
 `;
 
 const style = {

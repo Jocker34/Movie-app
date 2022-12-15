@@ -7,7 +7,10 @@ export const SerachBar = ({ setSearch }) => {
   const { translate } = useTranslation();
 
   const handleOnChange = (e) => {
-    e.target.value ? setSearch(e.target.value) : setSearch('');
+    if (e.target.value) {
+      return setSearch(e.target.value);
+    }
+    setSearch('');
   };
 
   return (

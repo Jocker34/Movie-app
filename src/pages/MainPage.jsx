@@ -3,14 +3,17 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 import { topRatedMovies } from 'topRatedMovies';
 import { Tabs } from './mainPage/Tabs';
 import { MovieCard } from 'components/MovieCard';
 
 import { searchMovie } from 'helpers/serarchMovie';
+import { useTranslation } from 'hooks/useTranslation';
 
 export const MainPage = ({ search }) => {
+  const { translate } = useTranslation();
   const [posts, setPosts] = useState(topRatedMovies);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -20,30 +23,34 @@ export const MainPage = ({ search }) => {
 
   const count = Math.ceil(posts.length / postsPerPage);
 
-  const handleOnChange = (page) => {
-    setCurrentPage(parseInt(page));
+  const handleOnChange = (e) => {
+    setCurrentPage(parseInt(e.target.textContent));
   };
 
-  return searchMovie(posts, search, indexOfFirstPost, indexOfLastPost)
-    .length !== 0 ? (
+  const resultOfSearch = searchMovie(
+    posts,
+    search,
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+
+  return resultOfSearch.length !== 0 ? (
     <Container>
       <Box>
         <Tabs posts={posts} setPosts={setPosts} />
-        <Grid container justifyContent='center' sx={{ minHeight: '80vh' }}>
-          {searchMovie(posts, search, indexOfFirstPost, indexOfLastPost).map(
-            (post) => (
-              <StyledMovieCard
-                key={post.id}
-                title={post.original_title}
-                image={post.backdrop_path}
-                rate={post.vote_average}
-              />
-            )
-          )}
+        <Grid container justifyContent='center'>
+          {resultOfSearch.map((post) => (
+            <StyledMovieCard
+              key={post.id}
+              title={post.original_title}
+              image={post.backdrop_path}
+              rate={post.vote_average}
+            />
+          ))}
         </Grid>
         <StyledPagination
           count={count}
-          onChange={(e) => handleOnChange(e.target.textContent)}
+          onChange={handleOnChange}
           page={currentPage}
           size='large'
           hidePrevButton
@@ -52,8 +59,12 @@ export const MainPage = ({ search }) => {
       </Box>
     </Container>
   ) : (
-    <Grid container justifyContent='center' sx={{ color: 'common.white' }}>
-      <h1>NO RESULTS FOUND</h1>
+    <Grid
+      container
+      justifyContent='center'
+      sx={{ color: 'common.white', marginTop: '20px' }}
+    >
+      <Typography variant='h4'>{translate('NO_RESULTS')}</Typography>
     </Grid>
   );
 };
@@ -66,6 +77,11 @@ const StyledPagination = styled(Pagination)(({ theme }) => ({
   justifyContent: 'center',
   button: {
     color: theme.palette.common.white,
+  },
+  '& .MuiPaginationItem-root': {
+    '&.Mui-selected': {
+      backgroundColor: theme.palette.success.light,
+    },
   },
 }));
 
