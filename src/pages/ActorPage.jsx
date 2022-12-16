@@ -1,12 +1,13 @@
-import styled from 'styled-components';
 import Grid from '@mui/material/Grid';
 
 import { Description } from './actorPage/Description';
-import { KnowBy } from './actorPage/KnowBy';
+import { Movies } from 'components/Movies';
 import { Photos } from './actorPage/Photos';
 
 import PersonJPG from 'images/Person.jpg';
 import { RESOLUTION, ALT } from 'constants';
+
+const KNOWN_BY = 'KNOWN_BY';
 
 export const ActorPage = () => {
   return (
@@ -16,21 +17,23 @@ export const ActorPage = () => {
         direction='row'
         justifyContent='center'
         sx={{ marginTop: '30px' }}
+        columnSpacing={4}
       >
-        <div>
+        <Grid item>
           <img src={PersonJPG} alt={ALT.PERSON} width={RESOLUTION.BIG} />
-        </div>
-        <Information>
-          <Description />
-          <Photos />
-        </Information>
+        </Grid>
+        <Grid item>
+          <Grid container rowSpacing={4} sx={{ maxWidth: '1150px' }}>
+            <Grid item>
+              <Description />
+            </Grid>
+            <Grid item>
+              <Photos />
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
-      <KnowBy />
+      <Movies text={KNOWN_BY} />
     </>
   );
 };
-
-const Information = styled.div`
-  margin: 0 30px 0 30px;
-  max-width: 1150px;
-`;

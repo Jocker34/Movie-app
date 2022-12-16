@@ -7,7 +7,7 @@ import { RESOLUTION } from 'constants';
 
 export const MoviePlaceholder = () => {
   return (
-    <Container>
+    <div id='wrapper'>
       <StyledImage
         src={MoviePlaceholderIMG}
         width={RESOLUTION.MEDIUM}
@@ -16,20 +16,19 @@ export const MoviePlaceholder = () => {
       <StyledButton variant='contained' color='success' sx={style}>
         <PlayArrowIcon />
       </StyledButton>
-    </Container>
+    </div>
   );
 };
-const Container = styled.div``;
 
 const StyledButton = styled(Button)`
-  ${Container}:hover & {
+  #wrapper:hover & {
     display: flex;
   }
 `;
 
 const StyledImage = styled.img`
   border-radius: 5px;
-  ${Container}:hover & {
+  #wrapper:hover & {
     filter: brightness(50%);
   }
 `;

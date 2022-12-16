@@ -2,31 +2,32 @@ import Grid from '@mui/material/Grid';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
 import { LanguageDropdown } from './header/LanguageDropdown ';
 import { SerachBar } from './header/SearchBar';
 
 export const Header = ({ setSearch }) => {
   return (
-    <StyledAppBar position='static'>
-      <Toolbar>
+    <AppBar position='static'>
+      <Toolbar sx={{ padding: '20px 0 20px 0' }}>
         <Grid
           container
           direction='row'
           justifyContent='space-between'
           alignItems='center'
         >
-          <Typography variant='h6' noWrap>
-            TITLE
-          </Typography>
-          <SerachBar setSearch={setSearch} />
-          <LanguageDropdown />
+          <Grid item>
+            <Typography variant='h6' noWrap>
+              TITLE
+            </Typography>
+          </Grid>
+          <Grid item>
+            <SerachBar setSearch={setSearch} />
+          </Grid>
+          <Grid item>
+            <LanguageDropdown />
+          </Grid>
         </Grid>
       </Toolbar>
-    </StyledAppBar>
+    </AppBar>
   );
 };
-
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.grey[900],
-}));

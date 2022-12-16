@@ -3,7 +3,6 @@ import Grid from '@mui/material/Grid';
 
 import PersonJPG from 'images/Person.jpg';
 import { useTranslation } from 'hooks/useTranslation';
-import { mockPersonPhoto } from 'mocks';
 import { RESOLUTION, ALT } from 'constants';
 
 export const Photos = () => {
@@ -15,8 +14,8 @@ export const Photos = () => {
         {translate('PHOTOS')}
       </Typography>
       <Grid container justifyContent='flexStart' spacing={4}>
-        {mockPersonPhoto.map((photo) => (
-          <Grid key={photo.id} item>
+        {Array.from(Array(4).keys()).map((photo) => (
+          <Grid key={photo} item>
             <img src={PersonJPG} alt={ALT.PERSON} width={RESOLUTION.MEDIUM} />
           </Grid>
         ))}

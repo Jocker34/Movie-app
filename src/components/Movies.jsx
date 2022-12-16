@@ -1,28 +1,21 @@
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import { MovieCard } from 'components/MovieCard';
-
-import { mockMoviePhoto } from 'mocks';
+import { MovieCardList } from './MoviCardList';
 import { useTranslation } from 'hooks/useTranslation';
 
-export const Recommendations = () => {
+export const Movies = ({ text }) => {
   const { translate } = useTranslation();
+  const movies = [...Array(5).keys()];
 
   return (
     <Grid item xs={12} justifyContent='center'>
       <Grid container justifyContent='center'>
         <Typography variant='h4' sx={{ marginBottom: '30px' }}>
-          {translate('RECOMMENDATIONS')}
+          {translate(text)}
         </Typography>
       </Grid>
-      <Grid container justifyContent='center' spacing={3}>
-        {mockMoviePhoto.map((movie) => (
-          <Grid key={movie.id} item>
-            <MovieCard />
-          </Grid>
-        ))}
-      </Grid>
+      <MovieCardList data={movies} />
     </Grid>
   );
 };

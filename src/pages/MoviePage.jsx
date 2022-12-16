@@ -1,11 +1,12 @@
-import styled from 'styled-components';
 import Grid from '@mui/material/Grid';
 
 import { Description } from './moviePage/Description';
 import { TopBilledCast } from './moviePage/TopBilledCast';
-import { Recommendations } from './moviePage/Recommendations';
+import { Movies } from 'components/Movies';
 import { MovieImage } from './moviePage/MovieImage';
 import { Images } from './moviePage/Images';
+
+const RECOMMENDATIONS = 'RECOMMENDATIONS';
 
 export const MoviePage = () => {
   return (
@@ -15,20 +16,26 @@ export const MoviePage = () => {
         direction='row'
         justifyContent='center'
         sx={{ marginTop: '30px' }}
+        columnSpacing={4}
       >
-        <MovieImage />
-        <Information>
-          <Description />
-          <TopBilledCast />
-          <Images />
-        </Information>
+        <Grid item>
+          <MovieImage />
+        </Grid>
+        <Grid item>
+          <Grid container rowSpacing={4} sx={{ maxWidth: '1150px' }}>
+            <Grid item>
+              <Description />
+            </Grid>
+            <Grid item>
+              <TopBilledCast />
+            </Grid>
+            <Grid item>
+              <Images />
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
-      <Recommendations />
+      <Movies text={RECOMMENDATIONS} />
     </>
   );
 };
-
-const Information = styled.div`
-  margin: 0 30px 0 30px;
-  max-width: 1150px;
-`;

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 
 import ToggleButton from '@mui/material/ToggleButton';
@@ -16,7 +15,7 @@ export const Tabs = ({ posts, setPosts }) => {
 
   return (
     <Grid container direction='row' justifyContent='flex-end'>
-      <StyledToggleButtonGroup
+      <ToggleButtonGroup
         color='secondary'
         exclusive
         aria-label='Platform'
@@ -41,11 +40,7 @@ export const Tabs = ({ posts, setPosts }) => {
         >
           Upcoming
         </ToggleButton>
-      </StyledToggleButtonGroup>
+      </ToggleButtonGroup>
     </Grid>
   );
 };
-
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
-  backgroundColor: theme.palette.common.white,
-}));

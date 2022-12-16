@@ -1,18 +1,34 @@
 import { createTheme } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
 
 export const theme = createTheme({
+  palette: {
+    text: {
+      primary: '#ffffff',
+    },
+    background: {
+      default: '#181414',
+    },
+  },
   components: {
-    MuiTypography: {
+    MuiAppBar: {
       styleOverrides: {
         root: {
-          color: 'white',
+          backgroundColor: grey[900],
         },
       },
     },
-    MuiCssBaseline: {
+    MuiToggleButtonGroup: {
       styleOverrides: {
-        body: {
-          backgroundColor: '#181414',
+        root: {
+          backgroundColor: 'white',
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: grey[900],
         },
       },
     },

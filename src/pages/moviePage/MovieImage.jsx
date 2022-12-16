@@ -8,7 +8,7 @@ import { RESOLUTION } from 'constants';
 
 export const MovieImage = () => {
   return (
-    <div>
+    <>
       <StyledBadge
         anchorOrigin={{
           vertical: 'top',
@@ -19,7 +19,7 @@ export const MovieImage = () => {
       >
         <img src={MoviePlaceholderIMG} alt={ALT.MOVIE} width={RESOLUTION.BIG} />
       </StyledBadge>
-    </div>
+    </>
   );
 };
 

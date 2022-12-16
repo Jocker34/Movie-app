@@ -6,9 +6,9 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { MoviePlaceholder } from './movieCard/Placeholder';
 
-export const MovieCard = ({ title, rate, className }) => {
+export const MovieCard = ({ title, rate }) => {
   return (
-    <Card variant='outlined' sx={style} className={className}>
+    <Card variant='outlined' sx={style}>
       <StyledBadge
         anchorOrigin={{
           vertical: 'top',

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -34,7 +33,7 @@ export const LanguageDropdown = () => {
     handleClose();
   };
   return (
-    <Container>
+    <>
       <Button
         id='basic-button'
         aria-controls={open ? 'basic-menu' : undefined}
@@ -60,13 +59,9 @@ export const LanguageDropdown = () => {
           </MenuItem>
         ))}
       </Menu>
-    </Container>
+    </>
   );
 };
-
-const Container = styled.div`
-  margin: 20px 0 20px 0;
-`;
 
 const style = {
   color: 'common.white',
