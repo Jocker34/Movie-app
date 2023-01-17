@@ -2,15 +2,23 @@ import { styled, alpha } from '@mui/material/styles';
 import { useTranslation } from 'hooks/useTranslation';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import {
+  useLazySearchQuery,
+  useLazyNowPlayingQuery,
+} from 'services/endpoints/movies.builder';
 
-export const SerachBar = ({ setSearch }) => {
+export const SerachBar = () => {
   const { translate } = useTranslation();
+  const [triggerSearchMovies] = useLazySearchQuery();
+  const [triggerNowPlayingMovies] = useLazyNowPlayingQuery();
 
   const handleOnChange = (e) => {
-    if (e.target.value) {
-      return setSearch(e.target.value);
+    if (e.key === 'Enter') {
+      triggerSearchMovies();
     }
-    setSearch('');
+    if (e.target.value.length === 1) {
+      triggerNowPlayingMovies();
+    }
   };
 
   return (
@@ -21,7 +29,7 @@ export const SerachBar = ({ setSearch }) => {
       <StyledInputBase
         placeholder={translate('SERACH')}
         inputProps={{ 'aria-label': 'search' }}
-        onChange={handleOnChange}
+        onKeyDown={handleOnChange}
       />
     </Search>
   );

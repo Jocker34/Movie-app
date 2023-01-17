@@ -10,7 +10,7 @@ export const MovieCardList = ({ data }) => {
       sx={{ paddingTop: '20px' }}
     >
       {data.map((post) => (
-        <Grid key={post.id || post} item>
+        <Grid key={post.id} item>
           <MovieCard title={post?.original_title} rate={post?.vote_average} />
         </Grid>
       ))}

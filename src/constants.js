@@ -43,3 +43,7 @@ export const ACTORS = [
     character: 'Played character',
   },
 ];
+
+export const API = 'https://api.themoviedb.org/3';
+
+export const API_KEY = '?api_key=c0e7b20ce2dba89c12ce2c123de59994';

@@ -4,10 +4,17 @@ import Grid from '@mui/material/Grid';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-import { sortByPopular, sortByRated, sortByUpComing } from 'helpers/sortMovies';
+import {
+  useLazyPopularQuery,
+  useLazyTopRatedQuery,
+  useLazyUpComingQuery,
+} from 'services/endpoints/movies.builder';
 
-export const Tabs = ({ posts, setPosts }) => {
+export const Tabs = () => {
   const [active, setActive] = useState('');
+  const [triggerPopularMovies] = useLazyPopularQuery();
+  const [triggerTopRateMovies] = useLazyTopRatedQuery();
+  const [triggerUpCominMovies] = useLazyUpComingQuery();
 
   const handleToggleButtons = (event, active) => {
     setActive(active);
@@ -22,22 +29,13 @@ export const Tabs = ({ posts, setPosts }) => {
         value={active}
         onChange={handleToggleButtons}
       >
-        <ToggleButton
-          value='popular'
-          onClick={() => sortByPopular(posts, setPosts)}
-        >
+        <ToggleButton value='popular' onClick={() => triggerPopularMovies()}>
           Popular
         </ToggleButton>
-        <ToggleButton
-          value='topRated'
-          onClick={() => sortByRated(posts, setPosts)}
-        >
+        <ToggleButton value='topRated' onClick={() => triggerTopRateMovies()}>
           Top rated
         </ToggleButton>
-        <ToggleButton
-          value='upcoming'
-          onClick={() => sortByUpComing(posts, setPosts)}
-        >
+        <ToggleButton value='upcoming' onClick={() => triggerUpCominMovies()}>
           Upcoming
         </ToggleButton>
       </ToggleButtonGroup>

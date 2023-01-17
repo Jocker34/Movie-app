@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Pagination from '@mui/material/Pagination';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import { topRatedMovies } from 'topRatedMovies';
 import { Tabs } from './mainPage/Tabs';
-import { MovieCardList } from 'components/MoviCardList';
+import { MovieCardList } from 'components/MovieCardList';
 
-import { searchMovie } from 'helpers/serarchMovie';
+import { slicePosts } from 'helpers/serarchMovie';
 import { useTranslation } from 'hooks/useTranslation';
+import { useSelector } from 'react-redux';
+import { getMovies } from 'store/selectors';
 
-export const MainPage = ({ search }) => {
+export const MainPage = () => {
   const { translate } = useTranslation();
-  const [posts, setPosts] = useState(topRatedMovies);
+  const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const movies = useSelector(getMovies);
+
+  useEffect(() => {
+    setPosts(movies);
+  }, [movies]);
 
   const postsPerPage = 18;
   const indexOfLastPost = currentPage * postsPerPage;
@@ -26,20 +32,23 @@ export const MainPage = ({ search }) => {
     setCurrentPage(parseInt(e.target.textContent));
   };
 
-  const resultOfSearch = searchMovie(
+  const resultSliceMovies = slicePosts(
     posts,
-    search,
     indexOfFirstPost,
     indexOfLastPost
   );
 
-  return resultOfSearch.length !== 0 ? (
-    <Grid container direction='column' sx={{ padding: '0 75px 0 75px' }}>
+  return posts.length !== 0 ? (
+    <Grid
+      container
+      direction='column'
+      sx={{ padding: '0 75px 0 75px', flex: '1' }}
+    >
       <Grid item sx={{ paddingTop: '20px' }}>
-        <Tabs posts={posts} setPosts={setPosts} />
+        <Tabs />
       </Grid>
-      <Grid item>
-        <MovieCardList data={resultOfSearch} />
+      <Grid item sx={{ flex: '1' }}>
+        <MovieCardList data={resultSliceMovies} />
       </Grid>
       <Grid item>
         <StyledPagination

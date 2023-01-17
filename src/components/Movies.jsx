@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import { MovieCardList } from './MoviCardList';
+import { MovieCardList } from './MovieCardList';
 import { useTranslation } from 'hooks/useTranslation';
 
 export const Movies = ({ text }) => {
