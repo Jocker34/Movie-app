@@ -14,7 +14,7 @@ export const SerachBar = () => {
 
   const handleOnChange = (e) => {
     if (e.key === 'Enter') {
-      triggerSearchMovies();
+      triggerSearchMovies(e.target.value);
     }
     if (e.target.value.length === 1) {
       triggerNowPlayingMovies();
