@@ -13,11 +13,14 @@ export const SerachBar = () => {
   const [triggerNowPlayingMovies] = useLazyNowPlayingQuery();
 
   const handleOnChange = (e) => {
+    if (!e.target.value) {
+      triggerNowPlayingMovies();
+    }
+  };
+
+  const searchOnPressEnter = (e) => {
     if (e.key === 'Enter') {
       triggerSearchMovies(e.target.value);
-    }
-    if (e.target.value.length === 1) {
-      triggerNowPlayingMovies();
     }
   };
 
@@ -29,7 +32,8 @@ export const SerachBar = () => {
       <StyledInputBase
         placeholder={translate('SERACH')}
         inputProps={{ 'aria-label': 'search' }}
-        onKeyDown={handleOnChange}
+        onKeyDown={searchOnPressEnter}
+        onChange={handleOnChange}
       />
     </Search>
   );

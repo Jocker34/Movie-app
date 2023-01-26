@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Pagination from '@mui/material/Pagination';
 import Grid from '@mui/material/Grid';
@@ -7,38 +7,28 @@ import Typography from '@mui/material/Typography';
 import { Tabs } from './mainPage/Tabs';
 import { MovieCardList } from 'components/MovieCardList';
 
-import { slicePosts } from 'helpers/serarchMovie';
 import { useTranslation } from 'hooks/useTranslation';
 import { useSelector } from 'react-redux';
 import { getMovies } from 'store/selectors';
 
 export const MainPage = () => {
   const { translate } = useTranslation();
-  const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const movies = useSelector(getMovies);
-
-  useEffect(() => {
-    setPosts(movies);
-  }, [movies]);
 
   const postsPerPage = 18;
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
-  const count = Math.ceil(posts.length / postsPerPage);
+  const count = Math.ceil(movies.length / postsPerPage);
 
   const handleOnChange = (e) => {
     setCurrentPage(parseInt(e.target.textContent));
   };
 
-  const resultSliceMovies = slicePosts(
-    posts,
-    indexOfFirstPost,
-    indexOfLastPost
-  );
+  const slicedMovies = movies.slice(indexOfFirstPost, indexOfLastPost);
 
-  return posts.length !== 0 ? (
+  return movies.length !== 0 ? (
     <Grid
       container
       direction='column'
@@ -48,7 +38,7 @@ export const MainPage = () => {
         <Tabs />
       </Grid>
       <Grid item sx={{ flex: '1' }}>
-        <MovieCardList data={resultSliceMovies} />
+        <MovieCardList data={slicedMovies} />
       </Grid>
       <Grid item>
         <StyledPagination
