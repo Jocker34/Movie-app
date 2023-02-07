@@ -1,14 +1,20 @@
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 import PersonIMG from 'images/Person.jpg';
-import { RESOLUTION } from 'constants';
+import { RESOLUTION, IMAGE } from 'constants';
 
-export const ActorCard = () => {
+export const ActorCard = ({ name, character, image }) => {
+  const actorImage = image ? `${IMAGE}${image}` : PersonIMG;
   return (
-    <>
-      <img src={PersonIMG} alt='person-placeholder' width={RESOLUTION.MEDIUM} />
-      <Typography variant='h6'>Actor Name</Typography>
-      <Typography variant='subtitle2'>Played character</Typography>
-    </>
+    <Grid maxWidth={'150px'}>
+      <img
+        src={actorImage}
+        alt='person-placeholder'
+        width={RESOLUTION.MEDIUM}
+      />
+      <Typography variant='h6'>{name}</Typography>
+      <Typography variant='subtitle2'>{character}</Typography>
+    </Grid>
   );
 };

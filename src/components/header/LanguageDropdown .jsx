@@ -20,6 +20,7 @@ const languageOptions = [
 export const LanguageDropdown = () => {
   const { language, setLanguage } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

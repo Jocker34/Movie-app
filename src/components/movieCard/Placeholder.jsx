@@ -1,19 +1,33 @@
 import styled from 'styled-components';
 import Button from '@mui/material/Button';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { VideoModal } from 'components/VideoModal';
 
 import MoviePlaceholderIMG from 'images/MoviePlaceholder.jpg';
-import { RESOLUTION } from 'constants';
+import { RESOLUTION, IMAGE } from 'constants';
+import { useState } from 'react';
+import { useLazyVideoQuery } from 'services/endpoints/movies.builder';
 
-export const MoviePlaceholder = () => {
+export const MoviePlaceholder = ({ id, image }) => {
+  const movieImage = image ? `${IMAGE}${image}` : MoviePlaceholderIMG;
+  const [shown, setShown] = useState(false);
+  const [triggerVideoQuery, { isSuccess, data }] = useLazyVideoQuery();
+
+  const handleOnClick = (id) => {
+    triggerVideoQuery(id);
+    setShown(true);
+  };
+
   return (
-    <Container id='wrapper'>
-      <StyledImage
-        src={MoviePlaceholderIMG}
-        width={RESOLUTION.MEDIUM}
-        height='206'
-      />
-      <StyledButton variant='contained' color='success' sx={style}>
+    <Container>
+      {shown && isSuccess && <VideoModal data={data} setShown={setShown} />}
+      <StyledImage src={movieImage} width={RESOLUTION.MEDIUM} height='206' />
+      <StyledButton
+        variant='contained'
+        color='success'
+        sx={style}
+        onClick={() => handleOnClick(id)}
+      >
         <PlayArrowIcon />
       </StyledButton>
     </Container>

@@ -29,9 +29,10 @@ const App = () => {
         <Grid container direction='column' sx={{ minHeight: '100vh' }}>
           <Header />
           <MainPage />
+
+          {/* <MoviePage /> */}
+          {/* <ActorPage /> */}
         </Grid>
-        {/* <MoviePage /> */}
-        {/* <ActorPage /> */}
       </LanguageContext.Provider>
     </ThemeProvider>
   );

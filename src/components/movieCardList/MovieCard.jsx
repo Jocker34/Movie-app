@@ -4,9 +4,21 @@ import Card from '@mui/material/Card';
 import Badge from '@mui/material/Badge';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { MoviePlaceholder } from './movieCard/Placeholder';
 
-export const MovieCard = ({ title, rate }) => {
+import { useLazyMovieGenresQuery } from 'services/endpoints/movies.builder';
+import { MoviePlaceholder } from '../movieCard/Placeholder';
+import { showGenres } from 'helpers/showGenres';
+import { useEffect } from 'react';
+
+export const MovieCard = ({ title, rate, id, image, genres }) => {
+  const [
+    triggerMovieGenres,
+    { isSuccess: fetchMovieGenres, data: movieGenresData },
+  ] = useLazyMovieGenresQuery();
+
+  useEffect(() => {
+    triggerMovieGenres();
+  }, [triggerMovieGenres]);
   return (
     <Card variant='outlined' sx={style}>
       <StyledBadge
@@ -17,12 +29,12 @@ export const MovieCard = ({ title, rate }) => {
         badgeContent={rate}
         color='success'
       >
-        <MoviePlaceholder />
+        <MoviePlaceholder id={id} image={image} />
       </StyledBadge>
       <CardContent>
         <Typography variant='subtitle1'>{title}</Typography>
         <Typography variant='subtitle2' sx={{ fontSize: 'small' }}>
-          Genre - 1
+          {fetchMovieGenres && showGenres(genres, movieGenresData.genres)}
         </Typography>
       </CardContent>
     </Card>
