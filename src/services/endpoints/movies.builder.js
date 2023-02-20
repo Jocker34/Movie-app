@@ -4,23 +4,23 @@ import { API_KEY } from 'constants';
 export const moviesEndpoints = movieApi.injectEndpoints({
   endpoints: (builder) => ({
     nowPlaying: builder.query({
-      query: () => ({
-        url: `movie/now_playing${API_KEY}`,
+      query: (page) => ({
+        url: `movie/now_playing${API_KEY}&page=${page}`,
       }),
     }),
     popular: builder.query({
-      query: () => ({
-        url: `movie/popular${API_KEY}`,
+      query: (page) => ({
+        url: `movie/popular${API_KEY}&page=${page}`,
       }),
     }),
     topRated: builder.query({
-      query: () => ({
-        url: `movie/top_rated${API_KEY}`,
+      query: (page) => ({
+        url: `movie/top_rated${API_KEY}&page=${page}`,
       }),
     }),
     upComing: builder.query({
-      query: () => ({
-        url: `movie/upcoming${API_KEY}&`,
+      query: (page) => ({
+        url: `movie/upcoming${API_KEY}&&page=${page}`,
       }),
     }),
     search: builder.query({

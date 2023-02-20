@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import { useTranslation } from 'hooks/useTranslation';
 import InputBase from '@mui/material/InputBase';
@@ -7,22 +8,48 @@ import {
   useLazyNowPlayingQuery,
 } from 'services/endpoints/movies.builder';
 
-export const SerachBar = () => {
+export const SerachBar = ({ setMovies }) => {
   const { translate } = useTranslation();
-  const [triggerSearchMovies] = useLazySearchQuery();
-  const [triggerNowPlayingMovies] = useLazyNowPlayingQuery();
+  const [emptySearch, setEmptySerach] = useState(true);
+  const [
+    triggerSearchMovies,
+    { isSuccess: fetchSearchMovies, data: searchMoviesData },
+  ] = useLazySearchQuery();
+  const [
+    triggerNowPlayingMovies,
+    { isSuccess: fetchNowPlayingMovies, data: nowPlayingMoviesData },
+  ] = useLazyNowPlayingQuery();
 
   const handleOnChange = (e) => {
     if (!e.target.value) {
+      setEmptySerach(true);
       triggerNowPlayingMovies();
     }
   };
 
   const searchOnPressEnter = (e) => {
     if (e.key === 'Enter') {
+      setEmptySerach(false);
       triggerSearchMovies(e.target.value);
     }
   };
+
+  useEffect(() => {
+    if (fetchSearchMovies && !emptySearch) {
+      setMovies(searchMoviesData.results);
+      return;
+    }
+    if (fetchNowPlayingMovies) {
+      setMovies(nowPlayingMoviesData.results);
+    }
+  }, [
+    emptySearch,
+    fetchNowPlayingMovies,
+    fetchSearchMovies,
+    nowPlayingMoviesData,
+    searchMoviesData,
+    setMovies,
+  ]);
 
   return (
     <Search>

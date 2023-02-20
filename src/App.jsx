@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { theme } from 'theme';
@@ -9,26 +9,20 @@ import { Header } from 'components/Header';
 import { MainPage } from 'pages/MainPage';
 // import { ActorPage } from 'pages/ActorPage';
 import LanguageContext from 'context/languageContext';
-import { useLazyNowPlayingQuery } from 'services/endpoints/movies.builder';
 
 const App = () => {
   const [language, setLanguage] = useState('EN');
-  const value = { language, setLanguage };
-  const [triggerNowPlayingQuery, { isLoading }] = useLazyNowPlayingQuery();
+  const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    if (!isLoading) {
-      triggerNowPlayingQuery();
-    }
-  }, [isLoading, triggerNowPlayingQuery]);
+  const value = { language, setLanguage };
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <LanguageContext.Provider value={value}>
         <Grid container direction='column' sx={{ minHeight: '100vh' }}>
-          <Header />
-          <MainPage />
+          <Header setMovies={setMovies} />
+          <MainPage movies={movies} setMovies={setMovies} />
 
           {/* <MoviePage /> */}
           {/* <ActorPage /> */}
