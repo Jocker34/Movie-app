@@ -1,17 +1,55 @@
+import { useEffect, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import { useTranslation } from 'hooks/useTranslation';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import {
+  useLazySearchQuery,
+  useLazyNowPlayingQuery,
+} from 'services/endpoints/movies.builder';
 
-export const SerachBar = ({ setSearch }) => {
+export const SerachBar = ({ setMovies }) => {
   const { translate } = useTranslation();
+  const [emptySearch, setEmptySerach] = useState(true);
+  const [
+    triggerSearchMovies,
+    { isSuccess: fetchSearchMovies, data: searchMoviesData },
+  ] = useLazySearchQuery();
+  const [
+    triggerNowPlayingMovies,
+    { isSuccess: fetchNowPlayingMovies, data: nowPlayingMoviesData },
+  ] = useLazyNowPlayingQuery();
 
   const handleOnChange = (e) => {
-    if (e.target.value) {
-      return setSearch(e.target.value);
+    if (!e.target.value) {
+      setEmptySerach(true);
+      triggerNowPlayingMovies();
     }
-    setSearch('');
   };
+
+  const searchOnPressEnter = (e) => {
+    if (e.key === 'Enter') {
+      setEmptySerach(false);
+      triggerSearchMovies(e.target.value);
+    }
+  };
+
+  useEffect(() => {
+    if (fetchSearchMovies && !emptySearch) {
+      setMovies(searchMoviesData.results);
+      return;
+    }
+    if (fetchNowPlayingMovies) {
+      setMovies(nowPlayingMoviesData.results);
+    }
+  }, [
+    emptySearch,
+    fetchNowPlayingMovies,
+    fetchSearchMovies,
+    nowPlayingMoviesData,
+    searchMoviesData,
+    setMovies,
+  ]);
 
   return (
     <Search>
@@ -21,6 +59,7 @@ export const SerachBar = ({ setSearch }) => {
       <StyledInputBase
         placeholder={translate('SERACH')}
         inputProps={{ 'aria-label': 'search' }}
+        onKeyDown={searchOnPressEnter}
         onChange={handleOnChange}
       />
     </Search>

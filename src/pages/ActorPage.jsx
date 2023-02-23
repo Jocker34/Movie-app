@@ -1,15 +1,43 @@
 import Grid from '@mui/material/Grid';
+import {
+  useLazyPersonKnownByQuery,
+  useLazyPersonDetailsQuery,
+  useLazyPersonImagesQuery,
+} from 'services/endpoints/movies.builder';
 
 import { Description } from './actorPage/Description';
 import { Movies } from 'components/Movies';
 import { Photos } from './actorPage/Photos';
+import { useTranslation } from 'hooks/useTranslation';
 
 import PersonJPG from 'images/Person.jpg';
-import { RESOLUTION, ALT } from 'constants';
+import { checkLanguage } from 'helpers/checkLanguage';
+import { RESOLUTION, ALT, IMAGE } from 'constants';
+import { useEffect } from 'react';
 
 const KNOWN_BY = 'KNOWN_BY';
 
 export const ActorPage = () => {
+  const { language } = useTranslation();
+
+  const [triggerPersonKnownBy, { isSuccess: fetchKnownBy, data: knownByData }] =
+    useLazyPersonKnownByQuery();
+  const [triggerPersonDetails, { isSuccess: fetchDetails, data: detailsData }] =
+    useLazyPersonDetailsQuery();
+  const [triggerPersonImages, { isSuccess: fetchImages, data: imagesData }] =
+    useLazyPersonImagesQuery();
+
+  useEffect(() => {
+    triggerPersonKnownBy(22);
+    triggerPersonDetails({ id: 22, lang: checkLanguage(language) });
+    triggerPersonImages(22);
+  }, [
+    triggerPersonDetails,
+    triggerPersonImages,
+    triggerPersonKnownBy,
+    language,
+  ]);
+
   return (
     <>
       <Grid
@@ -20,20 +48,35 @@ export const ActorPage = () => {
         columnSpacing={4}
       >
         <Grid item>
-          <img src={PersonJPG} alt={ALT.PERSON} width={RESOLUTION.BIG} />
+          {fetchDetails && (
+            <img
+              src={
+                detailsData.profile_path
+                  ? `${IMAGE}${detailsData.profile_path}`
+                  : PersonJPG
+              }
+              alt={ALT.PERSON}
+              width={RESOLUTION.BIG}
+            />
+          )}
         </Grid>
         <Grid item>
-          <Grid container rowSpacing={4} sx={{ maxWidth: '1150px' }}>
+          <Grid
+            container
+            direction='column'
+            rowSpacing={4}
+            sx={{ maxWidth: '1150px' }}
+          >
             <Grid item>
-              <Description />
+              {fetchDetails && <Description data={detailsData} />}
             </Grid>
             <Grid item>
-              <Photos />
+              {fetchImages && <Photos data={imagesData.profiles} />}
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-      <Movies text={KNOWN_BY} />
+      {fetchKnownBy && <Movies text={KNOWN_BY} data={knownByData.cast} />}
     </>
   );
 };

@@ -1,12 +1,12 @@
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import { MovieCardList } from './MoviCardList';
+import { MovieCardList } from './MovieCardList';
 import { useTranslation } from 'hooks/useTranslation';
 
-export const Movies = ({ text }) => {
+export const Movies = ({ text, data }) => {
   const { translate } = useTranslation();
-  const movies = [...Array(5).keys()];
+  const movies = data.slice(0, 5);
 
   return (
     <Grid item xs={12} justifyContent='center'>

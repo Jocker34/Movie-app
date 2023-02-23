@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { LanguageDropdown } from './header/LanguageDropdown ';
 import { SerachBar } from './header/SearchBar';
 
-export const Header = ({ setSearch }) => {
+export const Header = ({ setMovies }) => {
   return (
     <AppBar position='static'>
       <Toolbar sx={{ padding: '20px 0 20px 0' }}>
@@ -21,7 +21,7 @@ export const Header = ({ setSearch }) => {
             </Typography>
           </Grid>
           <Grid item>
-            <SerachBar setSearch={setSearch} />
+            <SerachBar setMovies={setMovies} />
           </Grid>
           <Grid item>
             <LanguageDropdown />
