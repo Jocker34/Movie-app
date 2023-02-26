@@ -17,7 +17,7 @@ export const Description = ({ data }) => {
     >
       <Grid item>
         <Typography variant='subtitle2'>{translate('TITLE')}</Typography>
-        <Typography variant='h3'>{data.original_title}</Typography>
+        <Typography variant='h3'>{data.title}</Typography>
       </Grid>
       <Grid item>
         <Typography variant='subtitle2'>{translate('OVERVIEW')}</Typography>

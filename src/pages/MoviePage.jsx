@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import {
   useLazyTopBilledCastQuery,
@@ -18,6 +19,7 @@ import { checkLanguage } from 'helpers/checkLanguage';
 const RECOMMENDATIONS = 'RECOMMENDATIONS';
 
 export const MoviePage = () => {
+  const { id } = useParams();
   const { language } = useTranslation();
 
   const [
@@ -38,11 +40,12 @@ export const MoviePage = () => {
   ] = useLazyMovieRecommendationsQuery();
 
   useEffect(() => {
-    triggerTopBilledCast(20);
-    triggerMovieImages(20);
-    triggerMovieDetails({ id: 20, lang: checkLanguage(language) });
-    triggerMovieRecommendations(20);
+    triggerTopBilledCast(id);
+    triggerMovieImages(id);
+    triggerMovieDetails({ id: id, lang: checkLanguage(language) });
+    triggerMovieRecommendations(id);
   }, [
+    id,
     language,
     triggerMovieDetails,
     triggerMovieImages,
@@ -62,7 +65,12 @@ export const MoviePage = () => {
           {fetchMovieDetails && <MovieImage data={movieDetailsData} />}
         </Grid>
         <Grid item>
-          <Grid container rowSpacing={4} sx={{ maxWidth: '1150px' }}>
+          <Grid
+            container
+            direction='column'
+            rowSpacing={4}
+            sx={{ maxWidth: '1150px' }}
+          >
             <Grid item>
               {fetchMovieDetails && <Description data={movieDetailsData} />}
             </Grid>
@@ -70,14 +78,20 @@ export const MoviePage = () => {
               {fetchTopBilledCast && <TopBilledCast data={topBilledCastData} />}
             </Grid>
             <Grid item>
-              {fetchMovieImages && <Images data={movieImagesData} />}
+              {fetchMovieImages && !!movieImagesData.backdrops.length && (
+                <Images data={movieImagesData} />
+              )}
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-      {fetchMovieRecommendations && (
-        <Movies text={RECOMMENDATIONS} data={movieRecommendationData.results} />
-      )}
+      {fetchMovieRecommendations &&
+        !!movieRecommendationData.results.length && (
+          <Movies
+            text={RECOMMENDATIONS}
+            data={movieRecommendationData.results}
+          />
+        )}
     </>
   );
 };

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import Badge from '@mui/material/Badge';
@@ -11,10 +12,16 @@ import { showGenres } from 'helpers/showGenres';
 import { useEffect } from 'react';
 
 export const MovieCard = ({ title, rate, id, image, genres }) => {
+  const navigate = useNavigate();
+
   const [
     triggerMovieGenres,
     { isSuccess: fetchMovieGenres, data: movieGenresData },
   ] = useLazyMovieGenresQuery();
+
+  const handleOnClick = () => {
+    navigate(`/movie/${id}`);
+  };
 
   useEffect(() => {
     triggerMovieGenres();
@@ -32,7 +39,18 @@ export const MovieCard = ({ title, rate, id, image, genres }) => {
         <MoviePlaceholder id={id} image={image} />
       </StyledBadge>
       <CardContent>
-        <Typography variant='subtitle1'>{title}</Typography>
+        <Typography
+          onClick={handleOnClick}
+          variant='subtitle1'
+          sx={{
+            '&:hover': {
+              cursor: 'pointer',
+              color: 'success.light',
+            },
+          }}
+        >
+          {title}
+        </Typography>
         <Typography variant='subtitle2' sx={{ fontSize: 'small' }}>
           {fetchMovieGenres && showGenres(genres, movieGenresData.genres)}
         </Typography>
