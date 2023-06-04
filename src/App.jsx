@@ -10,6 +10,7 @@ import { MoviePage } from 'pages/MoviePage';
 import { MainPage } from 'pages/MainPage';
 import { ActorPage } from 'pages/ActorPage';
 import LanguageContext from 'context/languageContext';
+import { ROUTE } from 'constants';
 
 const App = () => {
   const [language, setLanguage] = useState('EN');
@@ -19,20 +20,20 @@ const App = () => {
 
   const routes = useRoutes([
     {
-      path: '/home',
+      path: ROUTE.HOME,
       element: <MainPage movies={movies} setMovies={setMovies} />,
     },
     {
-      path: '/movie/:id',
+      path: ROUTE.MOVIE_PAGE,
       element: <MoviePage />,
     },
     {
-      path: '/actor/:id',
+      path: ROUTE.ACTOR_PAGE,
       element: <ActorPage />,
     },
     {
       path: '*',
-      element: <Navigate to='/home' />,
+      element: <Navigate to={ROUTE.HOME} />,
     },
   ]);
 

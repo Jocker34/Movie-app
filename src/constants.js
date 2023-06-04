@@ -8,6 +8,12 @@ export const ALT = {
   PERSON: 'person-placeholder',
 };
 
+export const ROUTE = {
+  HOME: '/',
+  ACTOR_PAGE: '/actor/:id',
+  MOVIE_PAGE: '/movie/:id',
+};
+
 export const API = 'https://api.themoviedb.org/3';
 export const YOUTUBE = 'https://www.youtube.com/embed/';
 
