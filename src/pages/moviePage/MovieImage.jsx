@@ -1,10 +1,14 @@
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 
-import { ALT } from 'constants';
-import { RESOLUTION, IMAGE } from 'constants';
+import MoviePlaceholderJPG from 'images/MoviePlaceholder.jpg';
+import { ALT, RESOLUTION, IMAGE } from 'constants';
 
 export const MovieImage = ({ data }) => {
+  const movieImage = data.poster_path
+    ? `${IMAGE}${data.poster_path}`
+    : MoviePlaceholderJPG;
+
   return (
     <>
       <StyledBadge
@@ -15,11 +19,7 @@ export const MovieImage = ({ data }) => {
         badgeContent={9.9}
         color='success'
       >
-        <img
-          src={`${IMAGE}${data.poster_path}`}
-          alt={ALT.MOVIE}
-          width={RESOLUTION.BIG}
-        />
+        <img src={movieImage} alt={ALT.MOVIE} width={RESOLUTION.BIG} />
       </StyledBadge>
     </>
   );

@@ -23,13 +23,15 @@ export const TopBilledCast = ({ data }) => {
           </Typography>
         </Grid>
         <Grid sx={{ margin: 'auto' }}>
-          <Button
-            onClick={handleOnClick}
-            variant='outlined'
-            sx={{ color: 'common.white', border: '1px solid white' }}
-          >
-            Show All
-          </Button>
+          {data.cast.length >= 6 && (
+            <Button
+              onClick={handleOnClick}
+              variant='outlined'
+              sx={{ color: 'common.white', border: '1px solid white' }}
+            >
+              Show All
+            </Button>
+          )}
         </Grid>
       </Grid>
       <Grid container justifyContent='flexStart' spacing={4}>
@@ -39,6 +41,7 @@ export const TopBilledCast = ({ data }) => {
               name={actors.name}
               character={actors.character}
               image={actors.profile_path}
+              id={actors.id}
             />
           </Grid>
         ))}

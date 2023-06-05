@@ -12,7 +12,7 @@ export const MovieCardList = ({ data }) => {
       {data.map((post) => (
         <Grid key={post.id || post} item>
           <MovieCard
-            title={post?.original_title}
+            title={post?.title}
             rate={post?.vote_average}
             id={post?.id}
             image={post?.poster_path}

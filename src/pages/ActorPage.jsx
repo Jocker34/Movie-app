@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import {
   useLazyPersonKnownByQuery,
@@ -18,6 +19,7 @@ import { useEffect } from 'react';
 const KNOWN_BY = 'KNOWN_BY';
 
 export const ActorPage = () => {
+  const { id } = useParams();
   const { language } = useTranslation();
 
   const [triggerPersonKnownBy, { isSuccess: fetchKnownBy, data: knownByData }] =
@@ -28,14 +30,15 @@ export const ActorPage = () => {
     useLazyPersonImagesQuery();
 
   useEffect(() => {
-    triggerPersonKnownBy(22);
-    triggerPersonDetails({ id: 22, lang: checkLanguage(language) });
-    triggerPersonImages(22);
+    triggerPersonKnownBy(id);
+    triggerPersonDetails({ id: id, lang: checkLanguage(language) });
+    triggerPersonImages(id);
   }, [
     triggerPersonDetails,
     triggerPersonImages,
     triggerPersonKnownBy,
     language,
+    id,
   ]);
 
   return (
