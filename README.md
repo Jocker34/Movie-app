@@ -1,3 +1,15 @@
+# Movie Application
+
+A project to search for movies along with relevant information about them, similar to "Filmweb."
+
+Technology stack:
+- React
+- Redux Toolkit
+- MUI
+
+Live version:
+https://fluffy-vacherin-07597a.netlify.app/
+
 # Getting Started with Create React App
 
 [![Actions Status](https://github.com/Jocker34/Movie-app/workflows/CI/badge.svg)](https://github.com/Jocker34/Movie-app/actions)
